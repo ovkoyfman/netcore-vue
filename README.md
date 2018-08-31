@@ -1,7 +1,7 @@
 # netcore-vue
-base .netcore with vue project
+base .netcore with vue project and basic API linked up
 
-##Type the following commands in the terminal
+## Type the following commands in the terminal
 
 `git clone https://github.com/alucidwolf/netcore-vue.git`
 
@@ -13,4 +13,4 @@ base .netcore with vue project
 
 `code .`
 
-##Inside Visual Studio Code, press `F5`
+## Inside Visual Studio Code, press `F5`
