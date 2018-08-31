@@ -1,12 +1,16 @@
 # netcore-vue
 base .netcore with vue project
 
-git clone https://github.com/alucidwolf/netcore-vue.git
+##Type the following commands in the terminal
 
-cd netcore-vue
+`git clone https://github.com/alucidwolf/netcore-vue.git`
 
-dotnet restore
+`cd netcore-vue`
 
-npm install
+`dotnet restore`
 
-F5
+`npm install`
+
+`code .`
+
+##Inside Visual Studio Code, press `F5`
