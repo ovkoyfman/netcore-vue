@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Check the forecasts</h1>
-        <button v-on:click="fetchForecasts">Get Data</button>
+        <h2>Check the forecasts</h2>
+        <b-button variant="primary" @click="fetchForecasts">Get Data</b-button>
         <p>Status {{ info }}.</p>
         <ul>
             <li v-for="forecast in forecasts" v-bind:key="forecast.Id">

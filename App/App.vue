@@ -1,14 +1,17 @@
 <template>
   <div id="home">
     <h1>Sandbox</h1>
-    <router-link to="todo">Todo List</router-link>
-    <router-link to="forecast">Forecast List</router-link>
+    <MainNavgation />
+  <div class="container">
     <router-view></router-view>
+  </div>
   </div>
 </template>
 
 <script>
-export default {};
+import MainNavigation from './Components/Navigation/MainNav.vue';
+export default {
+};
 </script>
 
 <style lang="scss">

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Manage Todos</h2>
     <BaseInputText
     v-model="newTodoText"
     placeholder="New Todo item"
