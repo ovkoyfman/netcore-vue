@@ -1,8 +1,10 @@
 <template>
-  <b-nav>
-    <b-nav-item to="todo">Todo List</b-nav-item>
-    <b-nav-item to="forecast">Forecast List</b-nav-item>
-  </b-nav>
+  <div>
+    <b-nav>
+      <b-nav-item to="todo">Dynamic List</b-nav-item>
+      <b-nav-item to="forecast">Basic API Call</b-nav-item>
+    </b-nav>
+  </div>
 </template>
 
 <script>

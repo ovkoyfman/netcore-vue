@@ -1,7 +1,7 @@
 <template>
-  <div id="home">
+  <div>
     <h1>Sandbox</h1>
-    <MainNavgation />
+    <MainNavgation></MainNavgation>
   <div class="container">
     <router-view></router-view>
   </div>
@@ -9,8 +9,12 @@
 </template>
 
 <script>
-import MainNavigation from './Components/Navigation/MainNav.vue';
+import MainNavgation from './Components/Navigation/MainNav'
 export default {
+  name: 'app',
+  components: {
+    'MainNavgation': MainNavgation
+  }
 };
 </script>
 
