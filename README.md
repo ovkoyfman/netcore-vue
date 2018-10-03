@@ -13,4 +13,4 @@ base .netcore with vue project and basic API linked up
 
 `code .`
 
-## Inside Visual Studio Code, press `F5`
+Inside Visual Studio Code, press `F5`
