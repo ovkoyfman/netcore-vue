@@ -1,19 +1,18 @@
 <template>
   <div>
-    <h1>Sandbox</h1>
-    <MainNavgation></MainNavgation>
-  <div class="container">
+    <MainNavgation v-if="!$route.path.includes('/cmseditor')"></MainNavgation>
+  <div class="container"> 
     <router-view></router-view>
   </div>
   </div>
 </template>
 
 <script>
-import MainNavgation from './Components/Navigation/MainNav'
+import MainNavgation from "./Components/Navigation/MainNav";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    'MainNavgation': MainNavgation
+    MainNavgation: MainNavgation
   }
 };
 </script>
@@ -23,5 +22,10 @@ export default {
 
 #home {
   color: $vue-blue;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1240px;
+  }
 }
 </style>
