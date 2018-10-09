@@ -1,13 +1,25 @@
 <template>
   <div  class="room-block">
-    <tr class="category">
-      <td :colspan="elementData.children.length" >
+    <div v-for="(item, index) in elementData.children">
+    <tr class="category" v-if="index == 0">
+      <td colspan="3">
         <input v-model="elementData.category" disabled/>
       </td>
     </tr>
-    <tr>
-        <component v-for="(item, index) in elementData.children" :key="index" v-bind:elementIndex="index" :parentIndex="parentIndex" :elementData="item" v-bind:is="item.component" :value="item.value">{{item}}</component>
+    <tr v-if="!index">
+      <td></td>
+      <td  v-for="(item, index) in item.rooms"  v-if="item.date" colspan="2">
+        <span>{{item.date}}</span>
+      </td>
     </tr>
+    <tr>
+      <td v-for="(item, index) in item.rooms" v-if="!item.date">
+        <component :key="index" v-bind:elementIndex="index" :parentIndex="parentIndex" :elementData="item" v-bind:is="item.component" :value="item.value">{{item}}</component>
+      </td><button @click="removeRow(index)" v-if="elementData.children.length > 1">Remove Row</button>
+    </tr>
+    </div>
+    <button @click="addRow">Add Row</button>
+    {{elementData}}
   </div>
 </template>
 <script>
@@ -20,6 +32,27 @@ export default {
       inputElement: {}
       //counter: this.fieldData.addedElementsCount,
     };
+  },
+  methods: {
+    addRow: function() {
+      //var rooms = Object.assign({}, this.elementData.children[0].rooms);
+      // Array.prototype.clone = function() {
+      //   return this.slice(0);
+      // };
+      //var rooms = this.elementData.children[0].rooms.clone();
+
+      //Use JSON to make copy of the existent array, otherwise it will stil point to the same objects inside the array
+      var rooms = JSON.parse(
+        JSON.stringify(this.elementData.children[0].rooms)
+      );
+      console.log(rooms);
+      var roomsObject = new Object({ rooms });
+      var lengthOfTheChildrenArray = this.elementData.children.length;
+      this.elementData.children.push(roomsObject);
+    },
+    removeRow: function(index) {
+      this.elementData.children.splice(index, 1);
+    }
   },
   components: {
     InputElement: InputElement,

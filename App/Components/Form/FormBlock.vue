@@ -5,6 +5,7 @@
       <button @click="submitForm()">Submit</button>
     </table>
     </form>
+    
 </template>
 <script>
 import RoomBlock from "./RoomBlock.vue";
@@ -21,69 +22,130 @@ export default {
             category: "Type Category Name",
             children: [
               {
-                label: "Room Type",
-                component: "input-element",
-                fieldType: "text",
-                fieldValue: "Single",
-                fieldName: "RoomType"
+                rooms: [
+                  {
+                    label: "Room Type",
+                    component: "select-element",
+                    options: [
+                      { text: "Single" },
+                      { text: "Double" },
+                      { text: "Master" }
+                    ],
+                    fieldName: "RoomType",
+                    disabled: true
+                  },
+                  {
+                    date: "10-02-2018"
+                  },
+                  {
+                    label: "Rate",
+                    component: "input-element",
+                    fieldType: "text",
+                    fieldValue: "0",
+                    fieldName: "0",
+                    disabled: true
+                  },
+                  {
+                    label: "Qty",
+                    component: "input-element",
+                    fieldType: "text",
+                    fieldValue: "0",
+                    fieldName: "0",
+                    disabled: true
+                  },
+                  {
+                    date: "10-03-2018"
+                  },
+                  {
+                    label: "Rate",
+                    component: "input-element",
+                    fieldType: "text",
+                    fieldValue: "0",
+                    fieldName: "0",
+                    disabled: true
+                  },
+                  {
+                    label: "Qty",
+                    component: "input-element",
+                    fieldType: "text",
+                    fieldValue: "0",
+                    fieldName: "0",
+                    disabled: true
+                  }
+                ]
               },
               {
-                label: "Rate",
-                component: "input-element",
-                fieldType: "text",
-                fieldValue: "0",
-                fieldName: "Rate"
-              },
-              {
-                label: "Qty",
-                component: "input-element",
-                fieldType: "number",
-                fieldValue: "0",
-                fieldName: "Qty"
-              }
-            ]
-          },
-          {
-            component: "room-block",
-            category: "Type Category Name",
-            children: [
-              {
-                label: "Room Type",
-                component: "input-element",
-                fieldType: "text",
-                fieldValue: "Double",
-                fieldName: "RoomType"
-              },
-              {
-                label: "Rate",
-                component: "input-element",
-                fieldType: "number",
-                fieldValue: "0.00",
-                fieldName: "Rate"
-              },
-              {
-                label: "Qty",
-                component: "input-element",
-                fieldType: "number",
-                fieldValue: "0",
-                fieldName: "Qty"
+                rooms: [
+                  {
+                    label: "Room Type",
+                    component: "select-element",
+                    options: [
+                      { text: "Single" },
+                      { text: "Double" },
+                      { text: "Master" }
+                    ],
+                    fieldName: "RoomType",
+                    disabled: true
+                  },
+                  {
+                    date: "10-02-2018"
+                  },
+                  {
+                    label: "Rate",
+                    component: "input-element",
+                    fieldType: "text",
+                    fieldValue: "0",
+                    fieldName: "0",
+                    disabled: true
+                  },
+                  {
+                    label: "Qty",
+                    component: "input-element",
+                    fieldType: "text",
+                    fieldValue: "0",
+                    fieldName: "0",
+                    disabled: true
+                  },
+                  {
+                    date: "10-03-2018"
+                  },
+                  {
+                    label: "Rate",
+                    component: "input-element",
+                    fieldType: "text",
+                    fieldValue: "0",
+                    fieldName: "0",
+                    disabled: true
+                  },
+                  {
+                    label: "Qty",
+                    component: "input-element",
+                    fieldType: "text",
+                    fieldValue: "0",
+                    fieldName: "0",
+                    disabled: true
+                  }
+                ]
               }
             ]
           }
         ]
       }
-      //counter: this.fieldData.addedElementsCount,
     };
   },
   methods: {
     transformToEditable: function(e) {
       e.stopPropagation();
-      Array.prototype.forEach.call(
-        document.getElementsByTagName("input"),
-        function(item) {
-          item.removeAttribute("disabled");
-        }
-      );
+      console.log(this.formData.components);
+      Array.prototype.forEach.call(this.formData.components, function(item) {
+        //item.removeAttribute("disabled");
+        Array.prototype.forEach.call(item.children, function(item) {
+          //item.removeAttribute("disabled");
+          Array.prototype.forEach.call(item.rooms, function(item) {
+            item.disabled = false;
+          });
+        });
+      });
     }
   },
   components: {

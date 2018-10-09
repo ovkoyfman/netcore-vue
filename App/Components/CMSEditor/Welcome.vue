@@ -25,6 +25,12 @@ export default {
           item.setAttribute("disabled", "disabled");
         }
       );
+      Array.prototype.forEach.call(
+        document.getElementsByTagName("select"),
+        function(item) {
+          item.setAttribute("disabled", "disabled");
+        }
+      );
     }
   }
 };

@@ -1,7 +1,5 @@
 <template>
-    <td>
-        <input :id="elementData.fieldName" :type="elementData.fieldType" v-model="elementData.fieldValue" @click="updateField()" disabled/>
-    </td>
+        <input :id="elementData.fieldName" :type="elementData.fieldType" v-model="elementData.fieldValue" @click="updateField()" :disabled="elementData.disabled"/>
 </template>
 <script>
 export default {

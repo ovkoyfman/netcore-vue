@@ -69,12 +69,12 @@ a:focus {
   position: relative;
 }
 .cmseditor form {
-  max-width: 80%;
+  max-width: 100%;
   margin: auto;
 }
 .room-block td {
   padding: 10px;
-  border: 1px solid #eee;
+  border: 1px solid #aaa;
 }
 .room-block td input:disabled {
   background-color: #fff;
@@ -173,6 +173,9 @@ span {
 }
 .category input {
   width: 100%;
+}
+select#RoomType:disabled {
+  border: none;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES
