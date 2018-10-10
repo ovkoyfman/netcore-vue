@@ -12,59 +12,47 @@ window.dataForTheForm = {
   template: {
     component: "room-block",
     category: "Type Category Name",
-    children: [
+    "10-02-2018": [
       {
-        rooms: [
-          {
-            label: "Room Type",
-            component: "select-element",
-            options: [
-              { text: "Single" },
-              { text: "Double" },
-              { text: "Master" }
-            ],
-            fieldName: "RoomType",
-            disabled: true
-          },
-          {
-            date: "10-02-2018"
-          },
-          {
-            label: "Rate",
-            component: "input-element",
-            fieldType: "text",
-            fieldValue: "0",
-            fieldName: "0",
-            disabled: true
-          },
-          {
-            label: "Qty",
-            component: "input-element",
-            fieldType: "text",
-            fieldValue: "0",
-            fieldName: "0",
-            disabled: true
-          },
-          {
-            date: "10-03-2018"
-          },
-          {
-            label: "Rate",
-            component: "input-element",
-            fieldType: "text",
-            fieldValue: "0",
-            fieldName: "0",
-            disabled: true
-          },
-          {
-            label: "Qty",
-            component: "input-element",
-            fieldType: "text",
-            fieldValue: "0",
-            fieldName: "0",
-            disabled: true
-          }
-        ]
+        label: "Room Type",
+        component: "select-element",
+        options: [{ text: "Single" }, { text: "Double" }, { text: "Master" }],
+        fieldName: "RoomType",
+        disabled: true
+      },
+      {
+        label: "Rate",
+        component: "input-element",
+        fieldType: "text",
+        fieldValue: "0",
+        fieldName: "0",
+        disabled: true
+      },
+      {
+        label: "Qty",
+        component: "input-element",
+        fieldType: "text",
+        fieldValue: "0",
+        fieldName: "0",
+        disabled: true
+      }
+    ],
+    "10-03-2018": [
+      {
+        label: "Rate",
+        component: "input-element",
+        fieldType: "text",
+        fieldValue: "0",
+        fieldName: "0",
+        disabled: true
+      },
+      {
+        label: "Qty",
+        component: "input-element",
+        fieldType: "text",
+        fieldValue: "0",
+        fieldName: "0",
+        disabled: true
       }
     ]
   },
@@ -72,224 +60,94 @@ window.dataForTheForm = {
     {
       component: "room-block",
       category: "Type Category Name",
-      children: [
+      "10-02-2018": [
         {
-          rooms: [
-            {
-              label: "Room Type",
-              component: "select-element",
-              options: [
-                { text: "Single" },
-                { text: "Double" },
-                { text: "Master" }
-              ],
-              fieldName: "RoomType",
-              disabled: true
-            },
-            {
-              date: "10-02-2018"
-            },
-            {
-              label: "Rate",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              label: "Qty",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              date: "10-03-2018"
-            },
-            {
-              label: "Rate",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              label: "Qty",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            }
-          ]
+          label: "Room Type",
+          component: "select-element",
+          options: [{ text: "Single" }, { text: "Double" }, { text: "Master" }],
+          fieldName: "RoomType",
+          disabled: true
         },
         {
-          rooms: [
-            {
-              label: "Room Type",
-              component: "select-element",
-              options: [
-                { text: "Single" },
-                { text: "Double" },
-                { text: "Master" }
-              ],
-              fieldName: "RoomType",
-              disabled: true
-            },
-            {
-              date: "10-02-2018"
-            },
-            {
-              label: "Rate",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              label: "Qty",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              date: "10-03-2018"
-            },
-            {
-              label: "Rate",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              label: "Qty",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            }
-          ]
+          label: "Rate",
+          component: "input-element",
+          fieldType: "text",
+          fieldValue: "0",
+          fieldName: "0",
+          disabled: true
+        },
+        {
+          label: "Qty",
+          component: "input-element",
+          fieldType: "text",
+          fieldValue: "0",
+          fieldName: "0",
+          disabled: true
+        }
+      ],
+      "10-03-2018": [
+        {
+          label: "Rate",
+          component: "input-element",
+          fieldType: "text",
+          fieldValue: "0",
+          fieldName: "0",
+          disabled: true
+        },
+        {
+          label: "Qty",
+          component: "input-element",
+          fieldType: "text",
+          fieldValue: "0",
+          fieldName: "0",
+          disabled: true
         }
       ]
     },
     {
       component: "room-block",
       category: "Type Category Name",
-      children: [
+      "10-02-2018": [
         {
-          rooms: [
-            {
-              label: "Room Type",
-              component: "select-element",
-              options: [
-                { text: "Single" },
-                { text: "Double" },
-                { text: "Master" }
-              ],
-              fieldName: "RoomType",
-              disabled: true
-            },
-            {
-              date: "10-02-2018"
-            },
-            {
-              label: "Rate",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              label: "Qty",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              date: "10-03-2018"
-            },
-            {
-              label: "Rate",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              label: "Qty",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            }
-          ]
+          label: "Room Type",
+          component: "select-element",
+          options: [{ text: "Single" }, { text: "Double" }, { text: "Master" }],
+          fieldName: "RoomType",
+          disabled: true
         },
         {
-          rooms: [
-            {
-              label: "Room Type",
-              component: "select-element",
-              options: [
-                { text: "Single" },
-                { text: "Double" },
-                { text: "Master" }
-              ],
-              fieldName: "RoomType",
-              disabled: true
-            },
-            {
-              date: "10-02-2018"
-            },
-            {
-              label: "Rate",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              label: "Qty",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              date: "10-03-2018"
-            },
-            {
-              label: "Rate",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            },
-            {
-              label: "Qty",
-              component: "input-element",
-              fieldType: "text",
-              fieldValue: "0",
-              fieldName: "0",
-              disabled: true
-            }
-          ]
+          label: "Rate",
+          component: "input-element",
+          fieldType: "text",
+          fieldValue: "0",
+          fieldName: "0",
+          disabled: true
+        },
+        {
+          label: "Qty",
+          component: "input-element",
+          fieldType: "text",
+          fieldValue: "0",
+          fieldName: "0",
+          disabled: true
+        }
+      ],
+      "10-03-2018": [
+        {
+          label: "Rate",
+          component: "input-element",
+          fieldType: "text",
+          fieldValue: "0",
+          fieldName: "0",
+          disabled: true
+        },
+        {
+          label: "Qty",
+          component: "input-element",
+          fieldType: "text",
+          fieldValue: "0",
+          fieldName: "0",
+          disabled: true
         }
       ]
     }

@@ -1,28 +1,39 @@
 <template>
   <div  class="room-block">
-    <div v-for="(item, index) in elementData.children">
-    <tr class="category" v-if="index == 0">
-      <td colspan="2">
-        <input v-model="elementData.category" disabled/>
-      </td>
-      <td>
-        <button @click="removeCategory(parentIndex)">Remove Category</button>
-      </td>
-    </tr>
-    <tr v-if="!index">
-      <td></td>
-      <td  v-for="(item, index) in item.rooms"  v-if="item.date" colspan="2">
-        <span>{{item.date}}</span>
-      </td>
-    </tr>
-    <tr>
-      <td v-for="(item, index) in item.rooms" v-if="!item.date">
-        <component :key="index" v-bind:elementIndex="index" :parentIndex="parentIndex" :elementData="item" v-bind:is="item.component" :value="item.value">{{item}}</component>
-      </td><button @click="removeRow(index)" v-if="elementData.children.length > 1">Remove Row</button>
-    </tr>
+    <!-- {{elementData.category}} -->
+      <tr class="category">
+        <td colspan="2">
+          <input v-model="elementData.category" disabled/>
+        </td>
+        <td>
+          <!-- <button @click="removeCategory(parentIndex)">Remove Category</button> -->
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td  v-for="(item, index) in Object.keys(elementData)" v-if="index>1"  colspan="2">{{item}}</td>
+        <!--<td  v-for="(item, index) in item"  v-if="item.date">-->
+      </tr>
+      <tr>
+      <template v-for="(itemMain, indexMain) in Object.keys(elementData)" v-if="indexMain>1">
+        <td  v-for="(item, index) in elementData[itemMain]"  v-if="indexMain>1">
+          <!--<td v-for="(item, index) in item">{{item}}-->
+         <component :key="index" v-bind:elementIndex="index" :parentIndex="parentIndex" :elementData="item" v-bind:is="item.component" :value="item.value">{{item}}</component>
+        </td>
+      </template>
+      <tr>
+
+      </tr>
+      <!-- <tr  v-for="(item, index) in Object.keys(elementData)" v-if="index>1">{{elementData[item]}}
+        <td v-for="(item, index) in elementData[3]"  v-if="index>1">{{item}}</td>
+      </tr> -->
+        <!--<td v-for="(item, index) in item.rooms" v-if="!item.date">
+          <component :key="index" v-bind:elementIndex="index" :parentIndex="parentIndex" :elementData="item" v-bind:is="item.component" :value="item.value">{{item}}</component>
+        </td><button @click="removeRow(index)" v-if="elementData.children.length > 1">Remove Row</button>
+      </tr> -->
+    <button @click="addRow">Add Row</button>
     </div>
-        <button @click="addRow">Add Row</button>
-  </div>
+    
 </template>
 <script>
 import InputElement from "./Input.vue";

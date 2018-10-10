@@ -21,14 +21,14 @@ export default {
   methods: {
     transformToEditable: function(e) {
       e.stopPropagation();
+      console.log(e);
       Array.prototype.forEach.call(this.formData.components, function(item) {
         //item.removeAttribute("disabled");
-        console.log(item);
-        Array.prototype.forEach.call(item.children, function(item) {
-          //item.removeAttribute("disabled");
-          Array.prototype.forEach.call(item.rooms, function(item) {
-            item.disabled = false;
-          });
+        console.log("1", item);
+        //item.removeAttribute("disabled");
+        Array.prototype.forEach.call(item, function(it) {
+          console.log("2", it);
+          item.disabled = false;
         });
       });
     },
