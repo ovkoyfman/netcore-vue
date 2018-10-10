@@ -3,7 +3,7 @@
     <div v-for="(item, index) in elementData.children">
     <tr class="category" v-if="index == 0">
       <td colspan="3">
-        <input v-model="elementData.category" disabled/>
+        <input v-model="elementData.category" disabled/><button @click="removeCategory">Remove Category</button>
       </td>
     </tr>
     <tr v-if="!index">
@@ -19,7 +19,6 @@
     </tr>
     </div>
     <button @click="addRow">Add Row</button>
-    {{elementData}}
   </div>
 </template>
 <script>
@@ -29,7 +28,8 @@ export default {
   data: function() {
     return {
       inputValue: "",
-      inputElement: {}
+      inputElement: {},
+      dataForTheForm: dataForTheForm
       //counter: this.fieldData.addedElementsCount,
     };
   },
@@ -43,7 +43,7 @@ export default {
 
       //Use JSON to make copy of the existent array, otherwise it will stil point to the same objects inside the array
       var rooms = JSON.parse(
-        JSON.stringify(this.elementData.children[0].rooms)
+        JSON.stringify(dataForTheForm.template.children[0].rooms)
       );
       console.log(rooms);
       var roomsObject = new Object({ rooms });
@@ -52,6 +52,9 @@ export default {
     },
     removeRow: function(index) {
       this.elementData.children.splice(index, 1);
+    },
+    removeCategory: function(index) {
+      this.dataForTheForm.components.splice(index, 1);
     }
   },
   components: {
