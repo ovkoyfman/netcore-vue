@@ -76,6 +76,9 @@ a:focus {
   padding: 10px;
   border: 1px solid #aaa;
 }
+.room-block {
+  margin-top: 20px;
+}
 .room-block td input:disabled {
   background-color: #fff;
   border: none;
@@ -171,9 +174,7 @@ span {
   background: #fff;
   width: 100%;
 }
-.category input {
-  width: 100%;
-}
+
 select#RoomType:disabled {
   border: none;
 }

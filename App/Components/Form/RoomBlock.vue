@@ -2,8 +2,11 @@
   <div  class="room-block">
     <div v-for="(item, index) in elementData.children">
     <tr class="category" v-if="index == 0">
-      <td colspan="3">
-        <input v-model="elementData.category" disabled/><button @click="removeCategory">Remove Category</button>
+      <td colspan="2">
+        <input v-model="elementData.category" disabled/>
+      </td>
+      <td>
+        <button @click="removeCategory(parentIndex)">Remove Category</button>
       </td>
     </tr>
     <tr v-if="!index">
@@ -18,7 +21,7 @@
       </td><button @click="removeRow(index)" v-if="elementData.children.length > 1">Remove Row</button>
     </tr>
     </div>
-    <button @click="addRow">Add Row</button>
+        <button @click="addRow">Add Row</button>
   </div>
 </template>
 <script>

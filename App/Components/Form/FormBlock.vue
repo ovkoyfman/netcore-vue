@@ -2,7 +2,7 @@
   <form @submit.prevent>
     <table  @click="transformToEditable($event)">
       <component v-for="(item, index) in formData.components" :key="index" :parentIndex="index" v-bind:elementIndex="index" :elementData="item" v-bind:is="item.component" :value="item.value">{{item}}</component>
-      <button @click="addCategory">Add Category</button><button @click="removeCategory(index)">Remove Category</button>
+      <button @click="addCategory">Add Category</button>
       <button @click="submitForm()">Submit</button>
     </table>
     </form>
@@ -38,9 +38,6 @@ export default {
       //var categoryObject = new Object({ components });
       var lengthOfTheCategoryArray = this.formData.components.length;
       this.formData.components.push(component);
-    },
-    removeCategory: function(index) {
-      this.formData.components.splice(index, 1);
     }
   },
   components: {
