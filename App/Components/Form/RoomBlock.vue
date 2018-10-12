@@ -6,9 +6,9 @@
       </td>
     </tr>
     <template  v-for="(item, index) in elementData.children" >
-      <tr v-if="!index">
-        <td></td>
-        <td  v-for="(item, index) in item.rooms" v-if="item.date" :colspan="2">
+      <tr v-if="!index" class="dates">
+        <td>Rooms</td>
+        <td  v-for="item in item.rooms" v-if="item.date" :colspan="2">
           <span>{{item.date}}</span>
         </td>
       </tr>

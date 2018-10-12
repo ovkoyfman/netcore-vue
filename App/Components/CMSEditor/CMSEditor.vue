@@ -73,6 +73,7 @@ button {
   height: 10px;
   padding: 0;
   outline: none;
+  color: transparent;
 }
 .content-wrapper {
   padding: 0;
@@ -85,7 +86,7 @@ button {
   margin: auto;
 }
 .room-block td {
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #aaa;
   cursor: move;
 }
@@ -100,9 +101,7 @@ button {
   margin-top: 20px;
 }
 .room-block td input:disabled {
-  background-color: #fff;
-  border: none;
-  cursor: move;
+  display: none;
 }
 .room-block .category td input:disabled {
   cursor: auto;
@@ -207,25 +206,27 @@ span {
   width: 100%;
   border: 1px solid #eee;
 }
+tr.dates {
+  background-color: #eee;
+}
 tr.enterSpace td {
   padding-top: 0;
   padding-bottom: 0;
 }
 select#RoomType:disabled {
-  border: none;
-  cursor: move;
+  display: none;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
 @media (max-width: 768px) {
-  #sidebar {
-    /* min-width: 80px;
+  /* #sidebar {
+     min-width: 80px;
       max-width: 80px;
       text-align: center;
-      margin-left: -80px !important; */
-  }
+      margin-left: -80px !important; 
+  }*/
   .dropdown-toggle::after {
     top: auto;
     bottom: 10px;
