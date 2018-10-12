@@ -5,6 +5,6 @@
 </template>
 <script>
 export default {
-  props: ["elementData", "submissionArray", "parentIndex"]
+  props: ["elementData", "submissionArray"]
 };
 </script>

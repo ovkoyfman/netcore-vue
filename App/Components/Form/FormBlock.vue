@@ -22,10 +22,8 @@ export default {
     transformToEditable: function(e) {
       e.stopPropagation();
       Array.prototype.forEach.call(this.formData.components, function(item) {
-        //item.removeAttribute("disabled");
         console.log(item);
         Array.prototype.forEach.call(item.children, function(item) {
-          //item.removeAttribute("disabled");
           Array.prototype.forEach.call(item.rooms, function(item) {
             item.disabled = false;
           });
@@ -35,7 +33,6 @@ export default {
     addCategory: function() {
       var component = JSON.parse(JSON.stringify(dataForTheForm.template));
       console.log(component);
-      //var categoryObject = new Object({ components });
       var lengthOfTheCategoryArray = this.formData.components.length;
       this.formData.components.push(component);
     }

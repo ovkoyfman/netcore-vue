@@ -11,7 +11,7 @@
 <script>
 //import { eventBusForSidebar } from '../../../index';
 export default {
-  data() {
+  data: function() {
     return {
       //display: true,
       sideMenu: {

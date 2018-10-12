@@ -1,39 +1,14 @@
 <template  @viewStateChanged="display = $event">
   <nav id="sidebar" class="active">
-    <!-- <div class="sidebar-header">
-      <button type="button" id="sidebarCollapse" @click="toggleSidebar" :display="display" class="btn btn-info">
-        <i class="fas fa-align-left"></i>
-      </button>
-    </div> -->
     <side-menu-items></side-menu-items>
   </nav>
 </template>
 <script>
-//import { eventBusForSidebar } from '../../../index'
 import sideMenuItems from "./SideMenuItems.vue";
 export default {
-  // data: function () {
-  //     return {
-  //       display: true,
-  //     }
-  //   },
-  // methods: {
-  //   toggleSidebar: function(){
-  //     this.display = !this.display;
-  //     this.$emit('viewStateChanged',false);
-  //     //eventBusForSidebar.$emit('viewStateChanged', this.display);
-  //   }
-  // },
   components: {
     sideMenuItems: sideMenuItems
   }
-  // created(){
-  //   eventBusForSidebar.$on('viewStateChanged', (data) =>
-  //   {
-  //     this.display = data;
-  //   });
-  // },
-  // props: ['display']
 };
 </script>
 <style>

@@ -61,7 +61,18 @@ a:focus {
   color: inherit;
   text-decoration: none;
 }
-
+button {
+  margin: 5px;
+}
+.enterSpace input {
+  width: 100%;
+  position: absolute;
+  margin-top: -5px;
+  border: none;
+  background: transparent;
+  height: 10px;
+  padding: 0;
+}
 .content-wrapper {
   padding: 0;
   margin-left: 260px;
@@ -75,6 +86,9 @@ a:focus {
 .room-block td {
   padding: 10px;
   border: 1px solid #aaa;
+}
+.room-block [draggable] td {
+  border-top: none;
 }
 .room-block {
   margin-top: 20px;
@@ -93,6 +107,8 @@ a:focus {
   background-image: url(https://uikits.cendyn.com/Areas/v002/Content/images/favicon-apple.png);
   background-repeat: no-repeat;
   background-position: center;
+  margin-left: -15px;
+  border-left: 1px solid #eee;
 }
 .cmseditor {
   margin-top: 60px;
@@ -160,11 +176,17 @@ span {
 .header {
   height: 60px;
   background-color: #fff;
-  border: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
   position: fixed;
   width: 100%;
-  max-width: 1180px;
+  max-width: 1164px;
   z-index: 999;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.remove-category {
+  float: right;
 }
 #content {
   width: 1020px;
@@ -173,8 +195,12 @@ span {
   transition: all 0.3s;
   background: #fff;
   width: 100%;
+  border: 1px solid #eee;
 }
-
+tr.enterSpace td {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 select#RoomType:disabled {
   border: none;
 }

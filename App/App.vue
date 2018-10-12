@@ -1,6 +1,7 @@
 <template>
   <div>
-    <MainNavgation v-if="!$route.path.includes('/cmseditor')"></MainNavgation>
+    <MainNavgation></MainNavgation>
+     <!-- v-if="!$route.path.includes('/cmseditor')" -->
   <div class="container"> 
     <router-view></router-view>
   </div>

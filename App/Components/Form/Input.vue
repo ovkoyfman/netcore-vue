@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  props: ["elementData", "parentIndex"],
+  props: ["elementData", "grandGrandParentIndex"],
   methods: {
     updateField: function() {
       if (
@@ -16,16 +16,20 @@ export default {
     },
     addToTheSubmission: function() {
       var self = this;
-      console.log(this.parentIndex);
+      console.log(this.grandGrandParentIndex);
       function findObjectIndex(element) {
         return Object.keys(element)[0] === self.elementData.fieldName;
       }
       if (this.elementData.fieldValue != "") {
         if (
-          this.submissionArray[this.parentIndex].findIndex(findObjectIndex) > -1
+          this.submissionArray[this.grandGrandParentIndex].findIndex(
+            findObjectIndex
+          ) > -1
         )
-          this.submissionArray[this.parentIndex].splice(
-            this.submissionArray[this.parentIndex].findIndex(findObjectIndex),
+          this.submissionArray[this.grandGrandParentIndex].splice(
+            this.submissionArray[this.grandGrandParentIndex].findIndex(
+              findObjectIndex
+            ),
             1,
             JSON.parse(
               '{"' +
@@ -36,7 +40,7 @@ export default {
             )
           );
         else
-          this.submissionArray[this.parentIndex].push(
+          this.submissionArray[this.grandGrandParentIndex].push(
             JSON.parse(
               '{"' +
                 this.elementData.fieldName +
@@ -46,8 +50,10 @@ export default {
             )
           );
       } else
-        this.submissionArray[this.parentIndex].splice(
-          this.submissionArray[this.parentIndex].findIndex(findObjectIndex),
+        this.submissionArray[this.grandGrandParentIndex].splice(
+          this.submissionArray[this.grandGrandParentIndex].findIndex(
+            findObjectIndex
+          ),
           1
         );
     }
