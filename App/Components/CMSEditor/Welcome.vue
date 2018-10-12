@@ -12,6 +12,7 @@ window.dataForTheForm = {
   template: {
     component: "room-block",
     category: "Type Category Name",
+    disabled: true,
     children: [
       {
         rooms: [
@@ -23,8 +24,7 @@ window.dataForTheForm = {
               { text: "Double" },
               { text: "Master" }
             ],
-            fieldName: "RoomType",
-            disabled: true
+            fieldName: "RoomType"
           },
           {
             date: "10-02-2018"
@@ -34,16 +34,14 @@ window.dataForTheForm = {
             component: "input-element",
             fieldType: "text",
             fieldValue: "0",
-            fieldName: "0",
-            disabled: true
+            fieldName: "0"
           },
           {
             label: "Qty",
             component: "input-element",
             fieldType: "text",
             fieldValue: "0",
-            fieldName: "0",
-            disabled: true
+            fieldName: "0"
           },
           {
             date: "10-03-2018"
@@ -53,16 +51,14 @@ window.dataForTheForm = {
             component: "input-element",
             fieldType: "text",
             fieldValue: "0",
-            fieldName: "0",
-            disabled: true
+            fieldName: "0"
           },
           {
             label: "Qty",
             component: "input-element",
             fieldType: "text",
             fieldValue: "0",
-            fieldName: "0",
-            disabled: true
+            fieldName: "0"
           }
         ]
       }
@@ -72,6 +68,7 @@ window.dataForTheForm = {
     {
       component: "room-block",
       category: "Type Category Name",
+      disabled: true,
       children: [
         {
           rooms: [
@@ -83,8 +80,7 @@ window.dataForTheForm = {
                 { text: "Double" },
                 { text: "Master" }
               ],
-              fieldName: "RoomType",
-              disabled: true
+              fieldName: "RoomType"
             },
             {
               date: "10-02-2018"
@@ -94,16 +90,14 @@ window.dataForTheForm = {
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               label: "Qty",
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               date: "10-03-2018"
@@ -113,16 +107,14 @@ window.dataForTheForm = {
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               label: "Qty",
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             }
           ]
         },
@@ -136,8 +128,7 @@ window.dataForTheForm = {
                 { text: "Double" },
                 { text: "Master" }
               ],
-              fieldName: "RoomType",
-              disabled: true
+              fieldName: "RoomType"
             },
             {
               date: "10-02-2018"
@@ -147,16 +138,14 @@ window.dataForTheForm = {
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               label: "Qty",
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               date: "10-03-2018"
@@ -166,16 +155,14 @@ window.dataForTheForm = {
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               label: "Qty",
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             }
           ]
         }
@@ -184,6 +171,7 @@ window.dataForTheForm = {
     {
       component: "room-block",
       category: "Type Category Name",
+      disabled: true,
       children: [
         {
           rooms: [
@@ -195,8 +183,7 @@ window.dataForTheForm = {
                 { text: "Double" },
                 { text: "Master" }
               ],
-              fieldName: "RoomType",
-              disabled: true
+              fieldName: "RoomType"
             },
             {
               date: "10-02-2018"
@@ -206,16 +193,14 @@ window.dataForTheForm = {
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               label: "Qty",
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               date: "10-03-2018"
@@ -225,16 +210,14 @@ window.dataForTheForm = {
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               label: "Qty",
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             }
           ]
         },
@@ -248,8 +231,7 @@ window.dataForTheForm = {
                 { text: "Double" },
                 { text: "Master" }
               ],
-              fieldName: "RoomType",
-              disabled: true
+              fieldName: "RoomType"
             },
             {
               date: "10-02-2018"
@@ -259,16 +241,14 @@ window.dataForTheForm = {
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               label: "Qty",
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               date: "10-03-2018"
@@ -278,16 +258,14 @@ window.dataForTheForm = {
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             },
             {
               label: "Qty",
               component: "input-element",
               fieldType: "text",
               fieldValue: "0",
-              fieldName: "0",
-              disabled: true
+              fieldName: "0"
             }
           ]
         }
@@ -312,13 +290,14 @@ export default {
   methods: {
     transformToNotEditable: function() {
       Array.prototype.forEach.call(this.formData.components, function(item) {
+        item.disabled = true;
         //item.removeAttribute("disabled");
-        Array.prototype.forEach.call(item.children, function(item) {
-          //item.removeAttribute("disabled");
-          Array.prototype.forEach.call(item.rooms, function(item) {
-            item.disabled = true;
-          });
-        });
+        // Array.prototype.forEach.call(item.children, function(item) {
+        //   //item.removeAttribute("disabled");
+        //   Array.prototype.forEach.call(item.rooms, function(item) {
+        //     item.disabled = true;
+        //   });
+        // });
       });
     }
   }

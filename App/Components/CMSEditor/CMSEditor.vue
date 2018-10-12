@@ -72,6 +72,7 @@ button {
   background: transparent;
   height: 10px;
   padding: 0;
+  outline: none;
 }
 .content-wrapper {
   padding: 0;
@@ -88,6 +89,10 @@ button {
   border: 1px solid #aaa;
   cursor: move;
 }
+.room-block tr:first-child td,
+.room-block tr:nth-child(2) td {
+  cursor: auto;
+}
 .room-block [draggable] td {
   border-top: none;
 }
@@ -98,6 +103,9 @@ button {
   background-color: #fff;
   border: none;
   cursor: move;
+}
+.room-block .category td input:disabled {
+  cursor: auto;
 }
 .content-wrapper.adjust {
   margin-left: 60px;
