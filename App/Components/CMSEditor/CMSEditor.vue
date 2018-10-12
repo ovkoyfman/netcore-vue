@@ -86,6 +86,7 @@ button {
 .room-block td {
   padding: 10px;
   border: 1px solid #aaa;
+  cursor: move;
 }
 .room-block [draggable] td {
   border-top: none;
@@ -96,6 +97,7 @@ button {
 .room-block td input:disabled {
   background-color: #fff;
   border: none;
+  cursor: move;
 }
 .content-wrapper.adjust {
   margin-left: 60px;
@@ -203,6 +205,7 @@ tr.enterSpace td {
 }
 select#RoomType:disabled {
   border: none;
+  cursor: move;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES

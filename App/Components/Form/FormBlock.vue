@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent>
-    <table  @click="transformToEditable($event)">
+    <table>
       <component v-for="(item, index) in formData.components" :key="index" :parentIndex="index" v-bind:elementIndex="index" :elementData="item" v-bind:is="item.component" :value="item.value">{{item}}</component>
       <button @click="addCategory">Add Category</button>
       <button @click="submitForm()">Submit</button>
@@ -19,17 +19,6 @@ export default {
     };
   },
   methods: {
-    transformToEditable: function(e) {
-      e.stopPropagation();
-      Array.prototype.forEach.call(this.formData.components, function(item) {
-        console.log(item);
-        Array.prototype.forEach.call(item.children, function(item) {
-          Array.prototype.forEach.call(item.rooms, function(item) {
-            item.disabled = false;
-          });
-        });
-      });
-    },
     addCategory: function() {
       var component = JSON.parse(JSON.stringify(dataForTheForm.template));
       console.log(component);
