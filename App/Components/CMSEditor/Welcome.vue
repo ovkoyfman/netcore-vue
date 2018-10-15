@@ -59,6 +59,40 @@ window.dataForTheForm = {
             fieldType: "text",
             fieldValue: "0",
             fieldName: "0"
+          },
+          {
+            date: "10-04-2018"
+          },
+          {
+            label: "Rate",
+            component: "input-element",
+            fieldType: "text",
+            fieldValue: "0",
+            fieldName: "0"
+          },
+          {
+            label: "Qty",
+            component: "input-element",
+            fieldType: "text",
+            fieldValue: "0",
+            fieldName: "0"
+          },
+          {
+            date: "10-05-2018"
+          },
+          {
+            label: "Rate",
+            component: "input-element",
+            fieldType: "text",
+            fieldValue: "0",
+            fieldName: "0"
+          },
+          {
+            label: "Qty",
+            component: "input-element",
+            fieldType: "text",
+            fieldValue: "0",
+            fieldName: "0"
           }
         ]
       }
@@ -115,6 +149,40 @@ window.dataForTheForm = {
               fieldType: "text",
               fieldValue: "0",
               fieldName: "0"
+            },
+            {
+              date: "10-04-2018"
+            },
+            {
+              label: "Rate",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              label: "Qty",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              date: "10-05-2018"
+            },
+            {
+              label: "Rate",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              label: "Qty",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
             }
           ]
         },
@@ -149,6 +217,40 @@ window.dataForTheForm = {
             },
             {
               date: "10-03-2018"
+            },
+            {
+              label: "Rate",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              label: "Qty",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              date: "10-04-2018"
+            },
+            {
+              label: "Rate",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              label: "Qty",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              date: "10-05-2018"
             },
             {
               label: "Rate",
@@ -218,6 +320,40 @@ window.dataForTheForm = {
               fieldType: "text",
               fieldValue: "0",
               fieldName: "0"
+            },
+            {
+              date: "10-04-2018"
+            },
+            {
+              label: "Rate",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              label: "Qty",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              date: "10-05-2018"
+            },
+            {
+              label: "Rate",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              label: "Qty",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
             }
           ]
         },
@@ -252,6 +388,40 @@ window.dataForTheForm = {
             },
             {
               date: "10-03-2018"
+            },
+            {
+              label: "Rate",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              label: "Qty",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              date: "10-04-2018"
+            },
+            {
+              label: "Rate",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              label: "Qty",
+              component: "input-element",
+              fieldType: "text",
+              fieldValue: "0",
+              fieldName: "0"
+            },
+            {
+              date: "10-05-2018"
             },
             {
               label: "Rate",

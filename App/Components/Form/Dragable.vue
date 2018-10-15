@@ -1,10 +1,10 @@
 <template>
-<tr>
+<div class="d-flex flex-row justify-content-between">
         <!-- @mouseout="deselectText($event,(parentIndex.toString() + index.toString()))"  
         @mousedown="selectText($event,(parentIndex.toString() + index.toString()))"-->
-        <td v-for="(item, index) in children.rooms" :key="index" v-if="!item.date">
-          <span v-if="globalData.components[grandParentIndex].disabled && item.selected">{{item.selected}}</span>
-          <span v-if="globalData.components[grandParentIndex].disabled && item.fieldValue">{{item.fieldValue}}</span>
+        <div v-for="(item, index) in children.rooms" :key="index" v-if="!item.date">
+          <template v-if="globalData.components[grandParentIndex].disabled && item.selected">{{item.selected}}</template>
+          <template v-if="globalData.components[grandParentIndex].disabled && item.fieldValue">{{item.fieldValue}}</template>
           <component 
             :key="index" 
             v-bind:elementIndex="index" 
@@ -12,9 +12,11 @@
             :elementData="item" 
             v-bind:is="item.component" 
             :value="item.value">{{item}}</component>
-        </td>
+        </div>
+        <div>
         <button @click="removeRow(thisParentIndex)" v-if="elementData.children.length > 1">Remove</button>
-      </tr>
+        </div>
+      </div>
 </template>
 <script>
 import InputElement from "./Input.vue";

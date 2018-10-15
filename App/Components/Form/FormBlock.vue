@@ -1,10 +1,10 @@
 <template>
-  <form @submit.prevent>
-    <table>
+  <form @submit.prevent class="border">
+    <div>
       <component v-for="(item, index) in formData.components" :key="index" :parentIndex="index" v-bind:elementIndex="index" :elementData="item" v-bind:is="item.component" :value="item.value">{{item}}</component>
       <button @click="addCategory">Add Category</button>
       <button @click="submitForm()">Submit</button>
-    </table>
+    </div>
     </form>
     
 </template>

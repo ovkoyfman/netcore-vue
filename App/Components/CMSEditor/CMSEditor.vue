@@ -85,25 +85,25 @@ button {
   max-width: 100%;
   margin: auto;
 }
-.room-block td {
+.room-block div {
   padding: 5px;
-  border: 1px solid #aaa;
+  /* border: 1px solid #aaa; */
   cursor: move;
 }
-.room-block tr:first-child td,
-.room-block tr:nth-child(2) td {
+.room-block tr:first-child div,
+.room-block tr:nth-child(2) div {
   cursor: auto;
 }
-.room-block [draggable] td {
+.room-block [draggable] div {
   border-top: none;
 }
 .room-block {
   margin-top: 20px;
 }
-.room-block td input:disabled {
+.room-block div input:disabled {
   display: none;
 }
-.room-block .category td input:disabled {
+.room-block .category div input:disabled {
   cursor: auto;
 }
 .content-wrapper.adjust {
@@ -206,15 +206,26 @@ span {
   width: 100%;
   border: 1px solid #eee;
 }
-tr.dates {
+div.dates {
   background-color: #eee;
 }
-tr.enterSpace td {
+div.enterSpace div {
   padding-top: 0;
   padding-bottom: 0;
 }
-select#RoomType:disabled {
+select.RoomType:disabled {
   display: none;
+}
+.d-flex div {
+  width: 200px;
+  text-align: right;
+}
+.d-flex > span {
+  width: 200px;
+}
+
+select.RoomType {
+  float: left;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES

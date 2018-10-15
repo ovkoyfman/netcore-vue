@@ -1,28 +1,35 @@
 <template>
   <div  class="room-block"  @click="transformToEditable($event,parentIndex)"  >
-    <tr class="category">
-      <td :colspan="globalData.template.children[0].rooms.length - 2">
-        <input v-model="elementData.category" :disabled="globalData.components[parentIndex].disabled"/><button class="remove-category" @click="removeCategory(parentIndex)">Remove Category</button>
-      </td>
-    </tr>
+    <div class="category d-flex flex-nowrap  justify-content-between">
+        <div><input v-model="elementData.category" :disabled="globalData.components[parentIndex].disabled"/></div><div><button class="remove-category" @click="removeCategory(parentIndex)">Remove Category</button></div>
+    </div>
     <template  v-for="(item, index) in elementData.children" >
-      <tr v-if="!index" class="dates">
-        <td>Rooms</td>
-        <td  v-for="item in item.rooms" v-if="item.date" :colspan="2">
-          <span>{{item.date}}</span>
-        </td>
-      </tr>
-      <tr class="enterSpace">
-        <td>
+      <div v-if="!index" class="dates d-flex flex-nowrap  justify-content-justify">
+        <span>Rooms</span>
+        <template  v-for="item in item.rooms" v-if="item.date">
+          <div></div><div>{{item.date}}</div>
+        </template>
+        <div></div>
+      </div>
+     <div v-if="!index" class="d-flex flex-nowrap  justify-content-justify">
+        <div></div>
+        <template  v-for="item in item.rooms">
+          <div v-if="item.label=='Qty'">
+          <span>Qty</span> 
+          </div> 
+          <div v-if="item.label=='Rate'">
+          <span>Rate</span>
+          </div>
+        </template>
+         <div></div>
+      </div>
+      <div class="enterSpace">
           <drop-zone :id="parentIndex.toString() + index.toString() + 'input'"></drop-zone>
-      </td>
-      </tr>
+      </div>
       <dragable class="editable" :id="parentIndex.toString() + index.toString()"  :key="index" draggable="true" :elementData="elementData" :children="item" :grandParentIndex="parentIndex" :thisParentIndex="index"></dragable>
-      <tr class="enterSpace" v-if="index==elementData.children.length-1">
-      <td>
+      <div class="enterSpace" v-if="index==elementData.children.length-1">
           <drop-zone :id="parentIndex.toString() + (index+1).toString() + 'input'"></drop-zone>
-      </td>
-      </tr>
+      </div>
     </template>
         <button @click="addRow">Add Row</button><button @click="saveForm($event,parentIndex)">Save</button>
   </div>

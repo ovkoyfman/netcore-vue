@@ -1,5 +1,5 @@
 <template>
-      <select :id="elementData.fieldName" v-model="elementData.selected"  :disabled="globalData.components[grandGrandParentIndex].disabled">            
+      <select :class="elementData.fieldName" v-model="elementData.selected"  :disabled="globalData.components[grandGrandParentIndex].disabled">            
         <option v-for="option in elementData.options" :key="option.text" :value="option.text">{{option.text}}</option>
       </select>
 </template>

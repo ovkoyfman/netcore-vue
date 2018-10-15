@@ -66,3 +66,5 @@ new Vue({
   template: "<div><router-view></router-view></div>",
   router
 });
+Vue.component("b-modal", bModal);
+Vue.directive("b-modal", bModalDirective);
