@@ -1,5 +1,5 @@
 <template>
-  <input :id="elementData.fieldName" :type="elementData.fieldType" v-model="elementData.fieldValue" @click="updateField()" :disabled="globalData.components[grandGrandParentIndex].disabled"/>
+  <input :id="elementData.fieldName" :type="elementData.fieldType" v-model="elementData.fieldValue" @click="updateField()" @keydown="" :disabled="globalData.components[grandGrandParentIndex].disabled"/>
 </template>
 <script>
 export default {

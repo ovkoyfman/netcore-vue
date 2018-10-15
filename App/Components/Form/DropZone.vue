@@ -5,11 +5,20 @@
 export default {
   mounted: function() {
     this.$el.ondragover = function(e) {
+      //e.path[2].classList.add("activeDrop");
       e.preventDefault();
-      //console.log(e);
+    };
+    this.$el.ondragenter = function(e) {
+      console.log("exit");
+      e.path[2].classList.add("activeDrop");
+    };
+    this.$el.ondragleave = function(e) {
+      console.log("exit");
+      e.path[2].classList.remove("activeDrop");
     };
     this.$el.ondrop = function(e) {
       e.preventDefault();
+      e.path[2].classList.remove("activeDrop");
       console.log(e);
       var data = e.dataTransfer.getData("Text");
       var incomingParent = data.split("")[0];

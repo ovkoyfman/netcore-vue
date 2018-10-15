@@ -227,6 +227,18 @@ select.RoomType:disabled {
 select.RoomType {
   float: left;
 }
+.enterSpace {
+  border-top: 1px dashed #fff;
+  border-bottom: 1px dashed #fff;
+}
+.activeDrop .enterSpace {
+  border-top: 1px dashed #000;
+  border-bottom: 1px dashed #000;
+}
+.editable input {
+  max-width: 75px;
+  text-align: right;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

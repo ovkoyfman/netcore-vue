@@ -11,9 +11,14 @@ import secondPage from "./components/CMSEditor/SecondPage.vue";
 import thirdPage from "./components/CMSEditor/ThirdPage.vue";
 import fourthPage from "./components/CMSEditor/FourthPage.vue";
 import dashboard from "./components/Main/Dashboard.vue";
+import { store } from "./store/store.js";
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
+
+Vue.filter("currency", function(value) {
+  return "$" + value;
+});
 
 const routes = [
   {
@@ -58,6 +63,7 @@ const routes = [
 const router = new VueRouter({
   linkExactActiveClass: "active",
   routes,
+  store,
   mode: "history"
 });
 
@@ -66,5 +72,3 @@ new Vue({
   template: "<div><router-view></router-view></div>",
   router
 });
-Vue.component("b-modal", bModal);
-Vue.directive("b-modal", bModalDirective);

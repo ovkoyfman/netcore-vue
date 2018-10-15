@@ -3,7 +3,9 @@
         <!-- @mouseout="deselectText($event,(parentIndex.toString() + index.toString()))"  
         @mousedown="selectText($event,(parentIndex.toString() + index.toString()))"-->
         <div v-for="(item, index) in children.rooms" :key="index" v-if="!item.date">
-          <template v-if="globalData.components[grandParentIndex].disabled && item.selected">{{item.selected}}</template>
+          <!--For select element text--><span v-if="item.label == 'Rate'">$</span>
+          <template v-if="globalData.components[grandParentIndex].disabled && item.component == 'select-element'">{{item.selected ? item.selected : "Select One"}}</template>
+          <!--For input element text-->
           <template v-if="globalData.components[grandParentIndex].disabled && item.fieldValue">{{item.fieldValue}}</template>
           <component 
             :key="index" 
@@ -11,7 +13,7 @@
             :grandGrandParentIndex="grandParentIndex" 
             :elementData="item" 
             :is="item.component" 
-            :value="item.value">{{item}}</component>
+            :value="item.value"></component>
         </div>
         <div>
         <button @click="removeRow(thisParentIndex)" v-if="elementData.children.length > 1">Remove</button>
@@ -26,8 +28,8 @@ export default {
     this.$el.ondragstart = function(event) {
       //this.set("v.dragid", event.target.dataset.dragId);
       event.dataTransfer.setData("Text", this.id);
-      console.log("event", event);
-      console.log(this.id);
+      //console.log("event", event);
+      //console.log(this.id);
     };
   },
   data: function() {
