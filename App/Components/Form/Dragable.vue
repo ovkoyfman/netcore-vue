@@ -7,10 +7,10 @@
           <template v-if="globalData.components[grandParentIndex].disabled && item.fieldValue">{{item.fieldValue}}</template>
           <component 
             :key="index" 
-            v-bind:elementIndex="index" 
+            :elementIndex="index" 
             :grandGrandParentIndex="grandParentIndex" 
             :elementData="item" 
-            v-bind:is="item.component" 
+            :is="item.component" 
             :value="item.value">{{item}}</component>
         </div>
         <div>
