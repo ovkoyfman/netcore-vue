@@ -1,11 +1,8 @@
 <template>
 <div class="d-flex flex-row justify-content-between">
-        <!-- @mouseout="deselectText($event,(parentIndex.toString() + index.toString()))"  
-        @mousedown="selectText($event,(parentIndex.toString() + index.toString()))"-->
         <div v-for="(item, index) in children.rooms" :key="index" v-if="!item.date">
-          <!--For select element text--><span v-if="item.label == 'Rate'">$</span>
+          <span v-if="item.label == 'Rate'">$</span>
           <template v-if="globalData.components[grandParentIndex].disabled && item.component == 'select-element'">{{item.selected ? item.selected : "Select One"}}</template>
-          <!--For input element text-->
           <template v-if="globalData.components[grandParentIndex].disabled && item.fieldValue">{{item.fieldValue}}</template>
           <component 
             :key="index" 
@@ -26,10 +23,7 @@ import SelectElement from "./Select.vue";
 export default {
   mounted: function() {
     this.$el.ondragstart = function(event) {
-      //this.set("v.dragid", event.target.dataset.dragId);
       event.dataTransfer.setData("Text", this.id);
-      //console.log("event", event);
-      //console.log(this.id);
     };
   },
   data: function() {
@@ -41,7 +35,6 @@ export default {
   },
   methods: {
     removeRow: function(index) {
-      console.log(index);
       this.elementData.children.splice(index, 1);
     }
   },

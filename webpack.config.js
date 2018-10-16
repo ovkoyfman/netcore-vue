@@ -5,6 +5,8 @@ const bundleOutputDir = "./docs";
 module.exports = {
   context: __dirname,
   entry: {
+    "es6-promise": "es6-promise",
+    "babel-polyfill": "babel-polyfill",
     main: "./App/index.js"
   },
   module: {

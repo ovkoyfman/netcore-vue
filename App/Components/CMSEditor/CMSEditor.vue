@@ -100,7 +100,7 @@ button {
 .room-block {
   margin-top: 20px;
 }
-.room-block div input:disabled {
+.editable div input:disabled {
   display: none;
 }
 .room-block .category div input:disabled {
@@ -234,6 +234,10 @@ select.RoomType {
 .activeDrop .enterSpace {
   border-top: 1px dashed #000;
   border-bottom: 1px dashed #000;
+}
+input:disabled {
+  background-color: #fff;
+  border: none;
 }
 .editable input {
   max-width: 75px;

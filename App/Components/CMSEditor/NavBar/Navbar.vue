@@ -29,7 +29,6 @@
 //                 $('.content-wrapper').addClass('adjust');
 //             }
 //         });
-//         console.log("World");
 //         window.scroll({
 //             top: 500
 //         });
@@ -46,7 +45,6 @@ export default {
   methods: {
     toggleSidebar: function() {
       this.display = !this.display;
-      console.log(this.display);
       eventBusForSidebar.$emit("viewStateChanged", this.display);
     }
   }

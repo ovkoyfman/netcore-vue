@@ -6,7 +6,6 @@
       <button @click="submitForm()">Submit</button>
     </div>
     </form>
-    
 </template>
 <script>
 import RoomBlock from "./RoomBlock.vue";
