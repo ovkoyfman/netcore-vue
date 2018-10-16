@@ -22,20 +22,36 @@ import InputElement from "./Input.vue";
 import SelectElement from "./Select.vue";
 export default {
   mounted: function() {
-    this.$el.ondragstart = function(event) {
-      event.dataTransfer.setData("Text", this.id);
+    var vm = this;
+    this.$el.ondragstart = function(e) {
+      e.dataTransfer.setData("Text", this.id);
+      vm.addClass("activeDrop");
+      vm.transformToNotEditable();
+    };
+    this.$el.ondragend = function(e) {
+      vm.addClass("");
     };
   },
   data: function() {
     return {
       inputValue: "",
-      inputElement: {},
-      globalData: dataForTheForm
+      inputElement: {}
     };
+  },
+  computed: {
+    globalData: function() {
+      return this.$store.state.dataForTheForm;
+    }
   },
   methods: {
     removeRow: function(index) {
       this.elementData.children.splice(index, 1);
+    },
+    transformToNotEditable: function() {
+      this.$store.commit("transformToNotEditable");
+    },
+    addClass: function(value) {
+      this.$store.commit("outlineDropFieldsOnTheForm", value);
     }
   },
   components: {

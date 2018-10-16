@@ -161,6 +161,11 @@ button {
   margin-bottom: 20px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+.edit span {
+  position: absolute;
+  padding-left: 5px;
+  padding-top: 3px;
+}
 .components li a {
   white-space: nowrap;
 }

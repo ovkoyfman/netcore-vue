@@ -6,9 +6,12 @@
 <script>
 export default {
   data: function() {
-    return {
-      globalData: dataForTheForm
-    };
+    return {};
+  },
+  computed: {
+    globalData: function() {
+      return this.$store.state.dataForTheForm;
+    }
   },
   props: ["elementData", "grandGrandParentIndex"]
 };

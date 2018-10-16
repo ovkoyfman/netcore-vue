@@ -5,9 +5,12 @@
 export default {
   props: ["elementData", "grandGrandParentIndex"],
   data: function() {
-    return {
-      globalData: dataForTheForm
-    };
+    return {};
+  },
+  computed: {
+    globalData: function() {
+      return this.$store.state.dataForTheForm;
+    }
   },
   methods: {
     updateField: function() {
