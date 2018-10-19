@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h1>Create/Edit</h1>
+        <h2>Create/Edit eProposal</h2>
+        
+        <b-form><input/></b-form>
         <!-- <nav-bar></nav-bar> -->
         <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -17,7 +19,7 @@
     </div>
 </template>
 <script>
-//import mainpage from '/NavBar/NavBar.vue';
+//import mainpage from "/NavBar/NavBar.vue";
 export default {
   components: {}
 };

@@ -1,51 +1,28 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-collapse" id="navbarSupportedContent">
         <b-nav>
-          <b-nav-item to="/cmseditor/welcome/">Welcome</b-nav-item>
-          <b-nav-item to="/cmseditor/secondpage/">Second Page</b-nav-item>
-          <b-nav-item to="/cmseditor/thirdpage/">Third Page</b-nav-item>
-          <b-nav-item to="/cmseditor/fourthpage/">Fourth Page</b-nav-item>
+          <template  v-for="nav in visibleMenu" >
+          <b-nav-item-dropdown v-if="nav.checked" :to="nav.to" :text="nav.title">
+            <template v-for="navSubMenu in nav.subpages" >
+            <b-dropdown-item v-if="navSubMenu.checked" :to="navSubMenu.to" >{{navSubMenu.title}}</b-dropdown-item>
+            </template>
+          </b-nav-item-dropdown>
+          </template>
         </b-nav>
       </div>
     </div>
   </nav>
 </template>
-<!--<script>
-//   document.addEventListener("DOMContentLoaded", function(event) { 
-//         $("#sidebarCollapse").on("click", function() {
-//             setTimeout(function(){
-//                 $("span").toggle();
-//             }, 120);
-//             $("#sidebar").toggleClass("active");
-//             $(".dropdown-toggle")
-//             .addClass("hidden")
-//             .find(".collapse.list-unstyled.show")
-//             .css("height", "0");
-//             if($('.content-wrapper').hasClass('adjust')){
-//                 $('.content-wrapper').removeClass('adjust');
-//             }else {
-//                 $('.content-wrapper').addClass('adjust');
-//             }
-//         });
-//         window.scroll({
-//             top: 500
-//         });
-//     });
-// </script>-->
 <script>
-//import { eventBusForSidebar } from "../index";
 export default {
   data: function() {
-    return {
-      display: true
-    };
+    return {};
   },
-  methods: {
-    toggleSidebar: function() {
-      this.display = !this.display;
-      eventBusForSidebar.$emit("viewStateChanged", this.display);
+  computed: {
+    visibleMenu: function() {
+      return this.$store.state.menuData;
     }
   }
 };

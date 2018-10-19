@@ -1,4 +1,4 @@
-<template  @viewStateChanged="display = $event">
+<template>
   <nav id="sidebar" class="active">
     <side-menu-items></side-menu-items>
   </nav>
@@ -61,6 +61,30 @@ export default {
   font-size: 1.1em;
   margin-bottom: 5px;
 }
+#sidebar button.btn.btn-secondary {
+  background-color: #fff;
+  color: #777;
+  border: none;
+  padding: 10px;
+  margin: 0;
+  width: 100%;
+}
+#sidebar button.btn.btn-secondary:hover {
+  color: #333;
+}
+#sidebar button.btn.btn-secondary i {
+  margin-right: 0;
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+#sidebar .btn-secondary:not(:disabled):not(.disabled):active:focus,
+#sidebar .btn-secondary:not(:disabled):not(.disabled).active:focus,
+#sidebar .show > .btn-secondary.dropdown-toggle:focus,
+#sidebar .btn-secondary:focus,
+#sidebar .btn-secondary.focus {
+  box-shadow: none;
+}
 
 #sidebar.active .dropdown-toggle::after {
   top: auto;
@@ -103,28 +127,5 @@ ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
   background: #6d7fcc;
-}
-
-ul.CTAs {
-  padding: 20px;
-}
-
-ul.CTAs a {
-  text-align: center;
-  font-size: 0.9em !important;
-  display: block;
-  border-radius: 5px;
-  margin-bottom: 5px;
-}
-
-a.download {
-  background: #fff;
-  color: #7386d5;
-}
-
-a.article,
-a.article:hover {
-  background: #6d7fcc !important;
-  color: #fff !important;
 }
 </style>

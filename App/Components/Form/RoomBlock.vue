@@ -1,55 +1,65 @@
 <template>
-  <div  class="room-block"  @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
-    <div class="category d-flex flex-nowrap  justify-content-between">
-        <div><input v-model="elementData.category" :disabled="globalData.components[parentIndex].disabled"/></div><div><button class="remove-category" @click="removeCategory($event,parentIndex)">Remove Category</button></div>
-    </div>
+  <table  class="room-block"  @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
+    <tr class="category">
+        <td><input v-model="elementData.category" :disabled="globalData.components[parentIndex].disabled"/></td><td :colspan="elementData.children[0].rooms.length-1"><button class="remove-category" @click="removeCategory($event,parentIndex)">Remove Category</button></td>
+    </tr>
     <template  v-for="(item, index) in elementData.children" >
-      <div v-if="!index" class="dates d-flex flex-nowrap  justify-content-justify">
-        <span>Rooms</span>
-        <template  v-for="item in item.rooms" v-if="item.date">
-          <div></div><div>{{item.date}}</div>
-        </template>
-        <div></div>
-      </div>
-     <div v-if="!index" class="d-flex flex-nowrap  justify-content-justify">
-        <div></div>
-        <template  v-for="item in item.rooms">
-          <div v-if="item.label=='Qty'">
-          <span>Qty</span> 
-          </div> 
-          <div v-if="item.label=='Rate'">
-          <span>Rate</span>
-          </div>
-        </template>
-         <div></div>
-      </div>
-      <div class="enterSpace">
-          <drop-zone :id="parentIndex.toString() + index.toString() + 'input'" :globalData="globalData"></drop-zone>
-      </div>
-      <dragable class="editable" :id="parentIndex.toString() + index.toString()"  :key="index" draggable="true" :elementData="elementData" :children="item" :grandParentIndex="parentIndex" :thisParentIndex="index"></dragable>
-      <div class="enterSpace" v-if="index==elementData.children.length-1">
-          <drop-zone :id="parentIndex.toString() + (index+1).toString() + 'input'" :globalData="globalData"></drop-zone>
-      </div>
+    <tr v-if="!index" class="dates">
+      <td>Rooms</td>
+      <template  v-for="item in item.rooms">
+        <td v-if="item.date" colspan="2">{{item.date}}</td>
+      </template>
+      <td></td>
+    </tr>
+    <tr v-if="!index" class="labeles">
+      <td></td>
+      <template  v-for="item in item.rooms">
+        <td v-if="item.label=='Qty'">Qty</td> 
+        <td v-if="item.label=='Rate'">Rate</td>
+      </template>
+        <td></td>
+    </tr>
+    <tr class="enterSpace">
+
+        <drop-zone 
+        :id="parentIndex.toString() + index.toString() + 'input'" 
+        :globalData="globalData"></drop-zone>
+
+    </tr>
+
+    <dragable class="editable" 
+    :id="parentIndex.toString() + index.toString()"  
+    :key="index" draggable="true" 
+    :elementData="elementData" 
+    :grandParentIndex="parentIndex" 
+    :children="item" 
+    :isDisabled = globalData.components[parentIndex].disabled 
+    :parentIndex="index"
+    @updateTotalNights="updateTotalNights"></dragable>
+
+    <tr class="enterSpace" v-if="index==elementData.children.length-1">
+        <drop-zone 
+        :id="parentIndex.toString() + (index+1).toString() + 'input'" 
+        :globalData="globalData"></drop-zone>
+    </tr>
+    <!-- <tr v-if = "index == elementData.children.length -1">
+      <td>Total Room Nights</td>
+      <template  v-for="item in item.rooms">
+       {{item}} {{item.totalRooms}}
+      <td v-if="item.totalRooms">{{item.totalRooms}}</td> 
+      </template>
+    </tr> -->
     </template>
-        <button @click="addRow">Add Row</button><button @click="saveForm($event,parentIndex)">Save</button>
-  </div>
+    <tr class="form-bottom">
+        <td colspan="2"><button @click="addRow">Add Row</button></td><td :colspan="(elementData.children[0].rooms.length-2)"><button @click="saveForm($event,parentIndex)">Save</button></td>
+    </tr>
+  </table>
 </template>
 <script>
 import DropZone from "./DropZone.vue";
 import Dragable from "./Dragable.vue";
 
 export default {
-  // mounted: function() {
-  //   this.$el.ondragstart = function(e) {
-  //     e.dataTransfer.setData("Text1", this.id);
-  //     console.log("Drag", e);
-  //     if (e.path) e.path[1].classList.add("categoryDrop");
-  //     else if (e.explicitOriginalTarget)
-  //       e.explicitOriginalTarget.parentElement.classList.add("categoryDrop");
-  //     else if (e.srcElement)
-  //       e.srcElement.parentElement.classList.add("categoryDrop");
-  //   };
-  // },
   data: function() {
     return {
       inputValue: "",
@@ -79,11 +89,40 @@ export default {
       e.preventDefault;
       e.stopPropagation;
       this.globalData.components.splice(index, 1);
+    },
+    // countNigtsForTheDate: function(thisIndex, parentIndex) {
+    //   var count = 0;
+    //   this.globalData.components[parentIndex].children.forEach(element => {
+    //     count += parseInt(element.rooms[thisIndex].fieldValue);
+    //     console.log(element);
+    //     console.log(thisIndex);
+    //   });
+    //   return count;
+    // },
+    updateTotalNights(childIndex, index) {
+      let totalRoomsForTheDate = 0;
+      this.globalData.components[this.parentIndex].children.forEach(element => {
+        totalRoomsForTheDate += parseInt(element.rooms[childIndex]);
+      });
+      //this.globalData.components[grandParentIndex].children[parentIndex].rooms[index];
     }
   },
   computed: {
     globalData: function() {
       return this.$store.state.dataForTheForm;
+    },
+    totalRoomNights: function() {
+      let rooms = 0;
+      this.globalData.components.forEach(element => {
+        element.children.forEach(element => {
+          element.rooms.forEach(element => {
+            if (element.label == "Qty" && parseInt(element.fieldValue) > 0) {
+              rooms += parseInt(element.fieldValue);
+            }
+          });
+        });
+      });
+      return rooms;
     }
   },
   components: {

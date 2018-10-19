@@ -1,10 +1,14 @@
 <template >
 <ul class="list-unstyled components">
       <li v-for="item in sideMenu" :key="item.name">
-        <a href="#homeSubmenu">
+        <b-btn v-if="item.action" v-b-modal.modal1>
           <i class="fas" :class="item.class"></i>
           <!-- <span>{{item.name}}</span> -->
-        </a>
+        </b-btn>
+        <router-link v-if="item.to" :to="item.to">
+          <i class="fas" :class="item.class"></i>
+          <!-- <span>{{item.name}}</span> -->
+        </router-link>
       </li>
 </ul>
 </template>
@@ -17,27 +21,33 @@ export default {
       sideMenu: {
         item1: {
           name: "Home",
-          class: "fa-desktop"
+          class: "fa-desktop",
+          to: "/"
         },
         item2: {
           name: "About",
-          class: "fa-file-pdf"
+          class: "fa-file-pdf",
+          to: "/"
         },
         item3: {
           name: "Pages",
-          class: "fa-envelope-open"
+          class: "fa-envelope-open",
+          to: "/"
         },
         item4: {
           name: "Portfolio",
-          class: "fa-image"
+          class: "fa-image",
+          action: "v-b-modal.modal1"
         },
         item5: {
           name: "FAQ",
-          class: "fa-question"
+          class: "fa-question",
+          to: "/"
         },
         item6: {
           name: "Contact",
-          class: "fa-paper-plane"
+          class: "fa-paper-plane",
+          to: "/"
         }
       }
     };

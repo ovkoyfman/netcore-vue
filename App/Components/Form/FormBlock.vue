@@ -27,7 +27,6 @@ export default {
   methods: {
     addCategory: function() {
       var component = JSON.parse(JSON.stringify(this.formData.template));
-      console.log(component);
       var lengthOfTheCategoryArray = this.formData.components.length;
       this.formData.components.push(component);
     }
