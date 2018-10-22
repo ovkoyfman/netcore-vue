@@ -1,10 +1,8 @@
 <template>
-  <div>
+  <div class="container-fluid">
     <MainNavgation></MainNavgation>
      <!-- v-if="!$route.path.includes('/cmseditor')" -->
-  <div class="container"> 
     <router-view></router-view>
-  </div>
   </div>
 </template>
 
