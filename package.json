@@ -27,6 +27,7 @@
         "babel-preset-stage-3": "^6.24.1",
         "bootstrap-vue": "^2.0.0-rc.11",
         "es6-promise": "^4.2.5",
+        "promise-polyfill": "^8.1.0",
         "vue": "^2.5.13",
         "vue-loader": "^14.0.3",
         "vue-router": "^3.0.1",
