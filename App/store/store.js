@@ -12,20 +12,6 @@ export const store = new Vuex.Store({
         category: "Type Category Name",
         disabled: true,
         totalValue: 0,
-        summary: [
-          {
-            "10-02-2018": 0
-          },
-          {
-            "10-03-2018": 0
-          },
-          {
-            "10-04-2018": 0
-          },
-          {
-            "10-05-2018": 0
-          }
-        ],
         children: [
           {
             rooms: [
@@ -548,6 +534,40 @@ export const store = new Vuex.Store({
       ) {
         item.disabled = true;
       });
+    },
+    transformToEditable: function(state, parentIndex) {
+      state.dataForTheForm.components[parentIndex].disabled = false;
+    },
+    addCategory: function(state, component){
+      state.dataForTheForm.components.push(component);
+    },
+    removeCategory: function(state, index){
+      state.dataForTheForm.components.splice(index, 1);
+    },
+    addRow: function(state, [parentIndex, roomsObject]){
+      state.dataForTheForm.components[parentIndex].children.push(roomsObject);
+    },
+     removeRow: function(state,[parentIndex, index]) {
+      state.dataForTheForm.components[parentIndex].children.splice(index, 1);
+     },
+    dropElement: function(state, [incomingParent, incomingChild, destinationParent, destinationChild]){
+      let rowToMove = JSON.parse(
+        JSON.stringify(
+          state.dataForTheForm.components[incomingParent].children[incomingChild]
+        )
+      );
+      state.dataForTheForm.components[incomingParent].children.splice(incomingChild, 1);
+      state.dataForTheForm.components[destinationParent].children.splice(
+        destinationChild,
+        0,
+        rowToMove
+      );
+      if (!state.dataForTheForm.components[incomingParent].children.length) {
+        state.dataForTheForm.components.splice(incomingParent, 1);
+       }
+    },
+    saveForm: function(state, parentIndex){
+      state.dataForTheForm.components[parentIndex].disabled = true;
     }
   }
 });

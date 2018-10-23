@@ -1,6 +1,6 @@
 <template>
 <tr>
-        <td v-for="(item, index) in children.rooms" :key="index" v-if="!item.date">
+        <td v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].rooms" :key="index" v-if="!item.date">
           <span v-if="item.label == 'Rate'">$</span>
           <template v-if="isDisabled && item.component == 'select-element'">{{item.selected ? item.selected : "Select One"}}</template>
           <template v-if="isDisabled && item.fieldValue">{{item.fieldValue}}</template>
@@ -13,7 +13,7 @@
           ></component>
         </td>
         <td>
-        <button @click="removeRow(parentIndex)" v-if="elementData.children.length > 1">Remove</button>
+        <button @click="removeRow(grandParentIndex,parentIndex)" v-if="globalData.components[grandParentIndex].children.length > 1">Remove</button>
         </td>
       </tr>
 </template>
@@ -33,8 +33,8 @@ export default {
     };
   },
   methods: {
-    removeRow: function(index) {
-      this.elementData.children.splice(index, 1);
+    removeRow: function(grandParentIndex,parentIndex) {
+      this.$store.commit("removeRow",[grandParentIndex, parentIndex]);
     },
     transformToNotEditable: function() {
       this.$store.commit("transformToNotEditable");
@@ -42,17 +42,20 @@ export default {
     addClass: function(value) {
       this.$store.commit("outlineDropFieldsOnTheForm", value);
     },
-    updateTotalNights: function(index) {
-      this.$emit("updateTotalNights", index, this.parentIndex);
-    }
+    // updateTotalNights: function(index) {
+    //   this.$emit("updateTotalNights", index, this.parentIndex);
+    // }
   },
   components: {
     InputElement: InputElement,
     SelectElement: SelectElement
   },
+  computed: {
+    globalData: function() {
+      return this.$store.state.dataForTheForm;
+    }
+  },
   props: [
-    "elementData",
-    "children",
     "parentIndex",
     "grandParentIndex",
     "isDisabled"

@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     transformToNotEditable: function() {
-      this.$store.commit("transformToNotEditable", this.formData.components);
+      this.$store.commit("transformToNotEditable");
     }
   }
 };

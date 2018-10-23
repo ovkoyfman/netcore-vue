@@ -4,7 +4,7 @@
 <script>
 export default {
   mounted: function() {
-    var globalData = this.globalData;
+    let vm = this;
     // this.$el.ondragover = function(e) {
     //   e.preventDefault();
     //   this.parentElement.setAttribute("style", "height: 50px");
@@ -28,23 +28,18 @@ export default {
         incomingChild < destinationChild
       )
         destinationChild--;
-      //console.log(globalData);
-      var rowToMove = JSON.parse(
-        JSON.stringify(
-          globalData.components[incomingParent].children[incomingChild]
-        )
-      );
-      globalData.components[incomingParent].children.splice(incomingChild, 1);
-      globalData.components[destinationParent].children.splice(
-        destinationChild,
-        0,
-        rowToMove
-      );
-      if (!globalData.components[incomingParent].children.length) {
-        globalData.components.splice(incomingParent, 1);
-      }
+      vm.dropElement(incomingParent, incomingChild, destinationParent, destinationChild);
     };
   },
-  props: ["globalData"]
-};
+  methods: {
+    dropElement: function(incomingParent, incomingChild, destinationParent, destinationChild) {
+      this.$store.commit("dropElement", [incomingParent, incomingChild, destinationParent, destinationChild]);
+    }
+  },
+  computed: {
+    globalData: function() {
+      return this.$store.state.dataForTheForm;
+    },
+  }
+}
 </script>
