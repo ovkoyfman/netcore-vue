@@ -532,7 +532,8 @@ export const store = new Vuex.Store({
           }
         ]
       }
-    ]
+    ],
+    styleLink: 'https://ovkoyfman.github.io/netcore-vue/css/style.css'
   },
   mutations: {
     outlineDropFieldsOnTheForm: function(state, value) {
