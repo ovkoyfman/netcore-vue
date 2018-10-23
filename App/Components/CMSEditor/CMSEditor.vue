@@ -82,15 +82,10 @@ export default {
    methods: {
     parentClick: function(item) {
       item.checked = !item.checked;
-      console.log(this.$router.currentRoute.path);
-         console.log(item.to);
-        
         if(this.$router.currentRoute.path == item.to && !item.checked) {
           this.reroute = true;
-          console.log("Inside", this.reroute);
         } 
         else this.reroute = false;
-         console.log(this.reroute);
       item.subpages.forEach(element => {
         element.checked = item.checked;
       });
