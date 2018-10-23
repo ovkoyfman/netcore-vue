@@ -503,7 +503,6 @@ export const store = new Vuex.Store({
     menuData: [
       {
         title: "Welcome",
-        to: "/cmseditor/welcome/",
         checked: true,
         disabled: true,
         subpages: [
@@ -516,17 +515,21 @@ export const store = new Vuex.Store({
         ]
       },
       {
-        title: "Second Page",
-        to: "/cmseditor/secondPage/",
+        title: "Other Pages",
         checked: true,
         subpages: [
           {
-            title: "SubPage 1",
+            title: "Second Page",
+            to: "/cmseditor/secondPage/",
+            checked: true
+          },
+          {
+            title: "Third Page",
             to: "/cmseditor/thirdPage/",
             checked: true
           },
           {
-            title: "SubPage 2",
+            title: "Fourth Page",
             to: "/cmseditor/fourthpage/",
             checked: true
           }
