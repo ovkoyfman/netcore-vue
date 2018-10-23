@@ -13,7 +13,7 @@
       <router-view class="cmseditor"></router-view>
     </div>
   </div>
-  <b-modal id="modal1" title="Manage Pages">
+  <b-modal id="modal1" title="Manage Pages" @ok="handleOk" >
     <!-- <b-form @submit.prevent>
       <ul>
       <li v-for="(item, index) in navData">
@@ -47,11 +47,11 @@ import sideBar from "./SideBar/Sidebar.vue";
 import navBar from "./NavBar/Navbar.vue";
 import header from "./Header/Header.vue";
 export default {
-  // data: function () {
-  //   return {
-  //     display: true,
-  //   }
-  // },
+   data: function () {
+     return {
+       reroute: false,
+     }
+   },
    mounted: function(){
     if(!document.getElementById('id1')) {
     var link = document.createElement('link');
@@ -63,7 +63,6 @@ export default {
     console.log(this.$store.state.styleLink);
   },
   destroyed: function(){
-    console.log("destroyed");
     var style = document.getElementById('id1')
     if(style) document.head.removeChild(style);
   },
@@ -83,19 +82,35 @@ export default {
    methods: {
     parentClick: function(item) {
       item.checked = !item.checked;
+      console.log(this.$router.currentRoute.path);
+         console.log(item.to);
+        
+        if(this.$router.currentRoute.path == item.to && !item.checked) {
+          this.reroute = true;
+          console.log("Inside", this.reroute);
+        } 
+        else this.reroute = false;
+         console.log(this.reroute);
       item.subpages.forEach(element => {
         element.checked = item.checked;
-        console.log(item.checked);
       });
     },
     childClick: function(parentItem, childItem) {
       var flag = 0;
+     
       childItem.checked = !childItem.checked;
-      parentItem.subpages.forEach(element => {
+      parentItem.subpages.forEach(element => { 
+        if(this.$router.currentRoute.path == element.to){
+         if(!element.checked) this.reroute = true 
+         else this.reroute = false;
+        }
         if (element.checked) flag = 1;
-        console.log("flag", flag);
       });
       parentItem.checked = flag ? true : false;
+    },
+    handleOk: function(){
+      if (this.reroute) this.$router.push('/cmseditor/welcome/')
+      this.reroute = false;
     }
   }
   // created(){

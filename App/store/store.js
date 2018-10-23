@@ -522,12 +522,12 @@ export const store = new Vuex.Store({
         subpages: [
           {
             title: "SubPage 1",
-            to: "/cmseditor/secondPage/",
+            to: "/cmseditor/thirdPage/",
             checked: true
           },
           {
             title: "SubPage 2",
-            to: "/cmseditor/thirdPage/",
+            to: "/cmseditor/fourthpage/",
             checked: true
           }
         ]
