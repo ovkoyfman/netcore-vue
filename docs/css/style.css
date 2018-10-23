@@ -33,6 +33,9 @@ button {
   outline: none;
   color: transparent;
 }
+.container-fluid {
+  max-width: 1210px;
+}
 .content-wrapper {
   padding: 0;
   margin-left: 260px;
