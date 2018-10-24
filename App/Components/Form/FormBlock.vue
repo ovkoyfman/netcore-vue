@@ -2,8 +2,8 @@
   <form @submit.prevent class="border" :class="dropClass">
     <div>
       <component v-for="(item, index) in formData.components" :key="index" :parentIndex="index" :elementIndex="index" :is="item.component" :value="item.value">{{item}}</component>
-      <b-button @click="addCategory">Add Category</b-button>
-      <b-button @click="submitForm()">Submit</b-button>
+      <b-button size="sm" @click="addCategory">Add Category</b-button>
+      <b-button size="sm" @click="submitForm()">Submit</b-button>
     </div>
     </form>
 </template>
