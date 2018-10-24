@@ -222,8 +222,11 @@ input[type="checkbox"]:disabled ~ label {
 form.border {
   border: none !important;
 }
-tr.labeles {
+tr.labels {
   cursor: auto;
+}
+tr.labels td {
+  padding: 0.375rem 0.75rem;
 }
 tr.enterSpace {
   padding: 0;

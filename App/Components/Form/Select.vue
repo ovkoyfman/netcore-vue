@@ -1,7 +1,7 @@
 <template>
-     <select :class="elementData.fieldName" v-model="elementData.selected"  :disabled="isDisabled">            
+     <b-form-select :class="elementData.fieldName" v-model="elementData.selected"  :disabled="isDisabled">            
         <option v-for="option in elementData.options" :key="option.text" :value="option.text">{{option.text}}</option>
-      </select>
+      </b-form-select>
       
 </template>
 <script>

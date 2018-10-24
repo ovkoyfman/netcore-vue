@@ -1,5 +1,5 @@
 <template>
-  <input  v-model="elementData.fieldValue" @click="updateField()" @keyup="$emit('dataChanged',index)" :disabled="isDisabled"/>
+  <b-form-input  v-model="elementData.fieldValue" @click="updateField()" @keyup="$emit('dataChanged',index)" :disabled="isDisabled"/>
 </template>
 <script>
 export default {
