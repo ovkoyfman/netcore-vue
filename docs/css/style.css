@@ -65,6 +65,9 @@ button {
 .editable tr input:disabled {
   display: none;
 }
+.editable td{
+  position: relative;
+}
 .room-block .category input {
   float: left;
 }
@@ -192,7 +195,7 @@ input:disabled {
 }
 td {
   width: 200px;
-  text-align: right;
+  text-align: center;
 }
 td:first-child {
   text-align: left;

@@ -13,7 +13,7 @@
           <!-- @dataChanged="updateTotalNights" -->
         </td>
         <td>
-        <b-button @click="removeRow(grandParentIndex,parentIndex)" v-if="globalData.components[grandParentIndex].children.length > 1">Remove</b-button>
+        <b-button size="sm" @click="removeRow(grandParentIndex,parentIndex)" v-if="globalData.components[grandParentIndex].children.length > 1">Remove</b-button>
         </td>
       </tr>
 </template>
