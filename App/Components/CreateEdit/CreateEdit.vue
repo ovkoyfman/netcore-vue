@@ -2,7 +2,7 @@
     <div>
         <h2>Create/Edit eProposal</h2>
         
-        <b-form><input/></b-form>
+        <b-form><b-input/></b-form>
         <!-- <nav-bar></nav-bar> -->
         <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">

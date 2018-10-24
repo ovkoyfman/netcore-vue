@@ -29,10 +29,10 @@
     <b-form @submit.prevent>
       <ul>
         <li v-for="(item, index) in navData">
-        <input type="checkbox" :value="item.title" :checked="item.checked" @click="parentClick(item)" :disabled="item.disabled"/><label>{{item.title}}</label>
+        <b-input type="checkbox" :value="item.title" :checked="item.checked" @click="parentClick(item)" :disabled="item.disabled"/><label>{{item.title}}</label>
           <ul>
             <li v-for="(subitem, index) in item.subpages">
-              <input type="checkbox" :value="subitem.title" :checked="subitem.checked" @click.prevent="childClick(item,subitem)" :disabled="subitem.disabled"/><label>{{subitem.title}}</label>
+              <b-input type="checkbox" :value="subitem.title" :checked="subitem.checked" @click.prevent="childClick(item,subitem)" :disabled="subitem.disabled"/><label>{{subitem.title}}</label>
             </li>
           </ul>
         </li>

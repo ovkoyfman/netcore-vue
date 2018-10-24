@@ -1,7 +1,7 @@
 <template>
   <table  class="room-block"  @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
     <tr class="category">
-        <td><input v-model="globalData.components[parentIndex].category" :disabled="globalData.components[parentIndex].disabled"/></td><td :colspan="globalData.components[parentIndex].children[0].rooms.length-1"><button class="remove-category" @click="removeCategory($event,parentIndex)">Remove Category</button></td>
+        <td colspan="3"><b-input v-model="globalData.components[parentIndex].category" :disabled="globalData.components[parentIndex].disabled"/></td><td :colspan="globalData.components[parentIndex].children[0].rooms.length-1"><b-button class="remove-category" @click="removeCategory($event,parentIndex)">Remove Category</b-button></td>
     </tr>
     <template  v-for="(item, index) in globalData.components[parentIndex].children" >
       <tr v-if="!index" class="dates">
@@ -11,7 +11,7 @@
         </template>
         <td></td>
       </tr>
-      <tr v-if="!index" class="labeles">
+      <tr v-if="!index" class="labels">
         <td></td>
         <template  v-for="item in item.rooms">
           <td v-if="item.label=='Qty'">Qty</td> 
@@ -49,7 +49,7 @@
       </tr> -->
     </template>
     <tr class="form-bottom">
-        <td colspan="2"><button @click="addRow">Add Row</button></td><td :colspan="(globalData.components[parentIndex].children[0].rooms.length-2)"><button @click="saveForm($event,parentIndex)">Save</button></td>
+        <td colspan="2"><b-button @click="addRow">Add Row</b-button></td><td :colspan="(globalData.components[parentIndex].children[0].rooms.length-2)"><b-button @click="saveForm($event,parentIndex)">Save</b-button></td>
     </tr>
   </table>
 </template>
