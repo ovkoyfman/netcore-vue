@@ -23,7 +23,7 @@
       <tr class="enterSpace">
           <drop-zone 
           :id="parentIndex.toString() + index.toString() + 'input'" 
-          :globalData="globalData"></drop-zone>
+          ></drop-zone>
 
       </tr>
       <dragable class="editable" 
@@ -104,7 +104,7 @@ export default {
   },
   computed: {
     globalData: function() {
-      return this.$store.state.dataForTheForm;
+      return this.$store.getters.formData;
     },
     // totalRoomNights: function() {
     //   let rooms = 0;

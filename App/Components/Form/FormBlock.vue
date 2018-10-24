@@ -18,10 +18,10 @@ export default {
   },
   computed: {
     formData: function() {
-      return this.$store.state.dataForTheForm;
+      return this.$store.getters.formData;
     },
     dropClass: function() {
-      return this.$store.state.dropClassValue;
+      return this.$store.state.form.dropClassValue;
     }
   },
   methods: {

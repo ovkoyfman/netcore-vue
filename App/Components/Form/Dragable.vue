@@ -9,8 +9,8 @@
             :is="item.component" 
             :isDisabled="isDisabled"
             :index="index"
-            @dataChanged="updateTotalNights"
-          ></component>
+          ></component> 
+          <!-- @dataChanged="updateTotalNights" -->
         </td>
         <td>
         <button @click="removeRow(grandParentIndex,parentIndex)" v-if="globalData.components[grandParentIndex].children.length > 1">Remove</button>
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     globalData: function() {
-      return this.$store.state.dataForTheForm;
+      return this.$store.getters.formData;
     }
   },
   props: [

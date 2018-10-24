@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     formData: function() {
-      return this.$store.state.dataForTheForm;
+      return this.$store.getters.formData;
     }
     // edit: function() {
     //   return this.$store.state.editableStateForThePage;

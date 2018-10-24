@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     globalData: function() {
-      return this.$store.state.dataForTheForm;
+      return this.$store.getters.formData;
     },
   }
 }
