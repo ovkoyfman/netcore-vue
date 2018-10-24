@@ -23,6 +23,7 @@
       <tr class="enterSpace">
           <drop-zone 
           :id="parentIndex.toString() + index.toString() + 'input'" 
+          :length="globalData.components[parentIndex].children[0].rooms.length"
           ></drop-zone>
 
       </tr>

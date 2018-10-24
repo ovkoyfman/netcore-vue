@@ -1,5 +1,7 @@
 <template>
+<td :colspan="length">
   <input/>
+</td>
 </template>
 <script>
 export default {
@@ -40,6 +42,9 @@ export default {
     globalData: function() {
       return this.$store.getters.formData;
     },
-  }
+  },
+  props:[
+    "length"
+  ]
 }
 </script>

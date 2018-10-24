@@ -23,7 +23,7 @@ a:focus {
 button {
   margin: 5px;
 }
-.enterSpace b-input {
+.enterSpace input {
   width: 100%;
   position: absolute;
   border: none;
@@ -62,13 +62,13 @@ button {
   margin: 20px;
   border: 1px solid #dee2e6;
 }
-.editable tr b-input:disabled {
+.editable tr input:disabled {
   display: none;
 }
-.room-block .category b-input {
+.room-block .category input {
   float: left;
 }
-.room-block .category b-input:disabled {
+.room-block .category input:disabled {
   cursor: auto;
   display: block;
 }
@@ -187,7 +187,7 @@ tr.form-bottom {
 select.RoomType:disabled {
   display: none;
 }
-b-input:disabled {
+input:disabled {
   display: none;
 }
 td {
@@ -201,18 +201,18 @@ td:first-child {
 .editable select.RoomType {
   float: left;
 }
-.activeDrop .enterSpace b-input {
+.activeDrop .enterSpace input {
   border-top: 1px dashed #000;
   border-bottom: 1px dashed #000;
 }
-b-input:disabled {
+input:disabled {
   background-color: #fff;
   border: none;
 }
-b-input[type="checkbox"]:disabled ~ label {
+input[type="checkbox"]:disabled ~ label {
   color: #999;
 }
-.editable b-input {
+.editable input {
   max-width: 75px;
   text-align: right;
 }
@@ -233,10 +233,10 @@ tr.enterSpace {
   height: 20px;
   width: 100%;
 }
-tr.enterSpace b-input {
+tr.enterSpace input {
   height: 20px;
 }
-tr.enterSpace b-input {
+tr.enterSpace input {
   border-top: 1px dashed #fff;
   border-bottom: 1px dashed #fff;
 }
