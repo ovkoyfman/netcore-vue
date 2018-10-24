@@ -243,6 +243,13 @@ tr.enterSpace b-input {
 .room-block .category input:disabled {
   background-color: #fff;
 }
+input.form-control {
+  display: none;
+}
+.category input.form-control, tr.enterSpace input.form-control, .edit input.form-control{
+  display: block;
+  width: 100%;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

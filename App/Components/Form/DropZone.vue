@@ -1,5 +1,5 @@
 <template>
-  <b-input/>
+  <input/>
 </template>
 <script>
 export default {
