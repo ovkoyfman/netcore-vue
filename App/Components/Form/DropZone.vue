@@ -1,7 +1,5 @@
 <template>
-<td :colspan="length">
   <input/>
-</td>
 </template>
 <script>
 export default {
