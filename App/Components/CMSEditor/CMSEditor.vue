@@ -27,16 +27,18 @@
       </ul>
     </b-form> -->
     <b-form @submit.prevent>
-      <ul>
-        <li v-for="(item, index) in navData">
-        <b-input type="checkbox" :value="item.title" :checked="item.checked" @click="parentClick(item)" :disabled="item.disabled"/><label>{{item.title}}</label>
-          <ul>
-            <li v-for="(subitem, index) in item.subpages">
-              <b-input type="checkbox" :value="subitem.title" :checked="subitem.checked" @click.prevent="childClick(item,subitem)" :disabled="subitem.disabled"/><label>{{subitem.title}}</label>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      
+        <template  v-for="(item, index) in navData">
+        <table>
+        <tr><th><i class="fas fa-bars"></i><label>{{item.title}}<input type="checkbox" :value="item.title" :checked="item.checked" @click="parentClick(item)" :disabled="item.disabled"/></label></th></tr>
+            <tr v-for="(subitem, index) in item.subpages">
+              <drop-zone></drop-zone>
+              <td><i class="fas fa-bars"></i><label>{{subitem.title}}<input type="checkbox" :value="subitem.title" :checked="subitem.checked" @click.prevent="childClick(item,subitem)" :disabled="subitem.disabled"/></label></td>
+              <drop-zone v-if="subitem.length-1"></drop-zone>
+            </tr>
+        </table>
+      </template>
+
     </b-form>
   </b-modal>
 </div>
@@ -46,6 +48,7 @@ import sideBar from "./SideBar/Sidebar.vue";
 //import { eventBusForSidebar } from "../../index";
 import navBar from "./NavBar/Navbar.vue";
 import header from "./Header/Header.vue";
+import dropZone from "../Form/DropZone.vue";
 export default {
    data: function () {
      return {
@@ -69,7 +72,8 @@ export default {
   components: {
     sideBar: sideBar,
     navBar: navBar,
-    cmsHeader: header
+    cmsHeader: header,
+    dropZone: dropZone
   },
    computed: {
     linkHref: function() {

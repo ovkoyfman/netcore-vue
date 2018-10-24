@@ -53,6 +53,27 @@ export const store = new Vuex.Store({
             checked: true
           }
         ]
+      },
+      {
+        title: "Other Pages",
+        checked: true,
+        subpages: [
+          {
+            title: "Second Page",
+            to: "/cmseditor/secondPage/",
+            checked: true
+          },
+          {
+            title: "Third Page",
+            to: "/cmseditor/thirdPage/",
+            checked: true
+          },
+          {
+            title: "Fourth Page",
+            to: "/cmseditor/fourthpage/",
+            checked: true
+          }
+        ]
       }
     ],
     styleLink: 'https://ovkoyfman.github.io/netcore-vue/css/style.css'

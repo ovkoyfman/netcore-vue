@@ -26,12 +26,12 @@
           ></drop-zone>
 
       </tr>
-      <dragable class="editable" 
+      <dragable class="editable"
+      component="tableRow" 
       :id="parentIndex.toString() + index.toString()"  
-      :key="index" draggable="true" 
-      :elementData="globalData.components[parentIndex]" 
+      :key="index" 
+      draggable="true" 
       :grandParentIndex="parentIndex" 
-      :children="item" 
       :isDisabled = globalData.components[parentIndex].disabled 
       :parentIndex="index"></dragable>
       <!-- @updateTotalNights="updateTotalNights" -->

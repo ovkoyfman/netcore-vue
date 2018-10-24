@@ -1,25 +1,13 @@
 <template>
-<tr>
-        <td v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].rooms" :key="index" v-if="!item.date">
-          <span v-if="item.label == 'Rate'">$</span>
-          <template v-if="isDisabled && item.component == 'select-element'">{{item.selected ? item.selected : "Select One"}}</template>
-          <template v-if="isDisabled && item.fieldValue">{{item.fieldValue}}</template>
-          <component
-            :elementData="item" 
-            :is="item.component" 
-            :isDisabled="isDisabled"
-            :index="index"
-          ></component> 
-          <!-- @dataChanged="updateTotalNights" -->
-        </td>
-        <td>
-        <b-button size="sm" @click="removeRow(grandParentIndex,parentIndex)" v-if="globalData.components[grandParentIndex].children.length > 1">Remove</b-button>
-        </td>
-      </tr>
+  <component
+  :is="component"
+  :parentIndex="parentIndex"
+  :grandParentIndex="grandParentIndex"
+  :isDisabled="isDisabled"
+  ></component>
 </template>
 <script>
-import InputElement from "./Input.vue";
-import SelectElement from "./Select.vue";
+import TableRow from "./TableRow.vue";
 export default {
   mounted: function() {
     var vm = this;
@@ -47,8 +35,7 @@ export default {
     // }
   },
   components: {
-    InputElement: InputElement,
-    SelectElement: SelectElement
+    TableRow: TableRow
   },
   computed: {
     globalData: function() {
@@ -56,6 +43,7 @@ export default {
     }
   },
   props: [
+    "component",
     "parentIndex",
     "grandParentIndex",
     "isDisabled"

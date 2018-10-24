@@ -35,14 +35,6 @@ export default {
     dropElement: function(incomingParent, incomingChild, destinationParent, destinationChild) {
       this.$store.commit("dropElement", [incomingParent, incomingChild, destinationParent, destinationChild]);
     }
-  },
-  computed: {
-    globalData: function() {
-      return this.$store.getters.formData;
-    },
-  },
-  props:[
-    "length"
-  ]
+  }
 }
 </script>
