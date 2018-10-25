@@ -23,17 +23,19 @@ export default {
       var incomingChild = data.split("")[1];
       var destinationParent;
       var destinationChild;
-      if (e.path) {
-        destinationParent = e.path.id.split("")[0];
-        destinationChild = e.path.id.split("")[1];
+
+      console.log(e);
+      if (e.srcElement) {
+        destinationParent = e.srcElement.id.split("")[0];
+        destinationChild = e.srcElement.id.split("")[1];
       }
       else if (e.explicitOriginalTarget) {
         destinationParent = e.explicitOriginalTarget.id.split("")[0];
         destinationChild = e.explicitOriginalTarget.id.split("")[1];
       }
-      else if (e.srcElement) {
-        destinationParent = e.srcElement.id.split("")[0];
-        destinationChild = e.srcElement.id.split("")[1];
+      else if (e.path) {
+        destinationParent = e.path.id.split("")[0];
+        destinationChild = e.path.id.split("")[1];
       }
       if (
         incomingParent == destinationParent &&
