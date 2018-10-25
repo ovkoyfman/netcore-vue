@@ -21,8 +21,20 @@ export default {
       var data = e.dataTransfer.getData("Text");
       var incomingParent = data.split("")[0];
       var incomingChild = data.split("")[1];
-      var destinationParent = e.srcElement.id.split("")[0];
-      var destinationChild = e.srcElement.id.split("")[1];
+      var destinationParent;
+      var destinationChild;
+      if (e.path) {
+        destinationParent = e.path.id.split("")[0];
+        destinationChild = e.path.id.split("")[1];
+      }
+      else if (e.explicitOriginalTarget) {
+        destinationParent = e.explicitOriginalTarget.id.split("")[0];
+        destinationChild = e.explicitOriginalTarget.id.split("")[1];
+      }
+      else if (e.srcElement) {
+        destinationParent = e.srcElement.id.split("")[0];
+        destinationChild = e.srcElement.id.split("")[1];
+      }
       if (
         incomingParent == destinationParent &&
         incomingChild < destinationChild
@@ -38,3 +50,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+input{
+  border: none;
+}
+.activeDrop input{
+  border-top: 1px dashed #000;
+  border-bottom: 1px dashed #000;
+}
+</style>
