@@ -74,7 +74,20 @@ export const store = new Vuex.Store({
             checked: true
           }
         ]
-      }
+      },
+      {
+        title: "Welcome",
+        checked: true,
+        disabled: true,
+        subpages: [
+          {
+            title: "Your Proposal",
+            to: "/cmseditor/welcome/",
+            checked: true,
+            disabled: true
+          }
+        ]
+      },
     ],
     styleLink: 'https://ovkoyfman.github.io/netcore-vue/css/style.css'
   },

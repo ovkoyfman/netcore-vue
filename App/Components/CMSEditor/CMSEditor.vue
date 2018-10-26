@@ -30,7 +30,6 @@
           <ul>
             <drag v-model="navData" :options="{handle:'.handleParent'}">
             <li v-for="(item, index) in navData"  class="col-sm-6">
-            
             <label><span class="handleParent">
             <i class="fas fa-bars"></i>
             </span>{{item.title}}
@@ -55,6 +54,7 @@ import sideBar from "./SideBar/Sidebar.vue";
 import navBar from "./NavBar/Navbar.vue";
 import header from "./Header/Header.vue";
 import dropZone from "../Form/DropZone.vue";
+import drag from "vuedraggable";
 export default {
    data: function () {
      return {
@@ -79,7 +79,8 @@ export default {
     sideBar: sideBar,
     navBar: navBar,
     cmsHeader: header,
-    dropZone: dropZone
+    dropZone: dropZone,
+    drag: drag
   },
    computed: {
     linkHref: function() {
@@ -150,6 +151,12 @@ input{
 }
 input:disabled {
     display: block;
+}
+li.col-sm-6:nth-child(3n+0) {
+    clear: both;
+}
+div.modal-body > form > ul > div > li {
+    margin-top: 20px;
 }
 @media (min-width: 576px){
 .col-sm-6 {
