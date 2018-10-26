@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import BootstrapVue from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import drag from "vuedraggable";
 import App from "./App.vue";
 import CreateEdit from "./components/CreateEdit/CreateEdit.vue";
 import CMSEditor from "./components/CMSEditor/CMSEditor.vue";
@@ -74,3 +75,4 @@ new Vue({
   router,
   store
 });
+Vue.component('drag',drag)

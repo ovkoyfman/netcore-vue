@@ -27,18 +27,24 @@
       </ul>
     </b-form> -->
     <b-form @submit.prevent>
-      
-        <template  v-for="(item, index) in navData">
-        <table>
-        <tr><th><i class="fas fa-bars"></i><label>{{item.title}}<input type="checkbox" :value="item.title" :checked="item.checked" @click="parentClick(item)" :disabled="item.disabled"/></label></th></tr>
-            <tr v-for="(subitem, index) in item.subpages">
-              <drop-zone></drop-zone>
-              <td><i class="fas fa-bars"></i><label>{{subitem.title}}<input type="checkbox" :value="subitem.title" :checked="subitem.checked" @click.prevent="childClick(item,subitem)" :disabled="subitem.disabled"/></label></td>
-              <drop-zone v-if="subitem.length-1"></drop-zone>
-            </tr>
-        </table>
-      </template>
-
+          <ul>
+            <drag v-model="navData" :options="{handle:'.handleParent'}">
+            <li v-for="(item, index) in navData"  class="col-sm-6">
+            
+            <label><span class="handleParent">
+            <i class="fas fa-bars"></i>
+            </span>{{item.title}}
+              <input type="checkbox" :value="item.title" :checked="item.checked" @click="parentClick(item)" :disabled="item.disabled"/>
+            </label>
+            <ul>
+          <drag :options="{handle:'.handle'}">
+              <li v-for="subitem in item.subpages" class="list-group-item"><label><span class="handle"><i class="fas fa-bars"></i></span>{{subitem.title}}<input type="checkbox" :value="subitem.title" :checked="subitem.checked" @click.prevent="childClick(item,subitem)" :disabled="subitem.disabled"/></label>
+              </li>
+          </drag>
+          </ul>
+          </li>
+            </drag>
+        </ul>
     </b-form>
   </b-modal>
 </div>
@@ -79,8 +85,13 @@ export default {
     linkHref: function() {
       return this.$store.state.styleLink;
     },
-    navData: function() {
-      return this.$store.state.menuData;
+    navData: {
+        get() {
+            return this.$store.state.menuData;
+        },
+        set(value) {
+            this.$store.commit('updateNavData', value)
+        }
     }
   },
    methods: {
@@ -123,3 +134,26 @@ export default {
   // }
 };
 </script>
+<style scoped>
+i.fas.fa-bars {
+    padding: 10px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+label{
+  width: 100%;
+}
+input{
+  float: right;
+}
+input:disabled {
+    display: block;
+}
+@media (min-width: 576px){
+.col-sm-6 {
+  float: left;
+}
+}
+</style>

@@ -78,6 +78,11 @@ export const store = new Vuex.Store({
     ],
     styleLink: 'https://ovkoyfman.github.io/netcore-vue/css/style.css'
   },
+  mutations: {
+    updateNavData: function(state, value) {
+      state.menuData = value;
+    }
+  },
   modules: {
     form: form
   }
