@@ -1,5 +1,8 @@
 <template>
-<tr>
+<tr :class='"here" + parentIndex'>
+<td><span class="handleParent">
+            <i class="fas fa-bars"></i>
+            </span>
 <td v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].rooms" :key="index" v-if="!item.date">
           <span v-if="item.label == 'Rate'">$</span>
           <template v-if="isDisabled && item.component == 'select-element'">{{item.selected ? item.selected : "Select One"}}</template>

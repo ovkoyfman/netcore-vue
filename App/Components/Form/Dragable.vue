@@ -1,10 +1,10 @@
 <template>
-  <component
+  <!-- <component
   :is="component"
   :parentIndex="parentIndex"
   :grandParentIndex="grandParentIndex"
   :isDisabled="isDisabled"
-  ></component>
+  ></component> -->
 </template>
 <script>
 import TableRow from "./TableRow.vue";
@@ -35,7 +35,7 @@ export default {
     // }
   },
   components: {
-    TableRow: TableRow
+    TableRow
   },
   computed: {
     globalData: function() {
