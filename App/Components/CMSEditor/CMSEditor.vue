@@ -104,10 +104,6 @@ export default {
         else this.reroute = false;
       item.subpages.forEach(element => {
         element.checked = item.checked;
-        if(this.$router.currentRoute.path == element.to){
-         if(!element.checked) this.reroute = true 
-         else this.reroute = false;
-        }
       });
     },
     childClick: function(parentItem, childItem) {
