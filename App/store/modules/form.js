@@ -1,5 +1,7 @@
 const state = {
     dataForTheForm: {
+        dates:["10-02-2018", "10-03-2018", "10-04-2018", "10-05-2018"],
+        labels:["Qty","Rate"],
         template: {
           component: "room-block",
           category: "Type Category Name",

@@ -1,6 +1,6 @@
 <template>
 <tr :class='"here" + parentIndex'>
-<td><span class="handleParent">
+<td class="handle"><span class="handleParent">
             <i class="fas fa-bars"></i>
             </span>
 <td class="price-qty" v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].rooms" :key="index" v-if="!item.date">

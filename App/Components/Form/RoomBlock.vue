@@ -1,25 +1,21 @@
 <template>
   <table  class="room-block" @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
-    
-    <template v-for="(item, index) in globalData.components[parentIndex].children">
-      <tr v-if="!index && parentIndex == 0" class="dates">
+      <tr class="dates" v-if="!parentIndex">
         <td></td>
         <td>Rooms</td>
-        <template  v-for="item in item.rooms">
-          <td v-if="item.date" colspan="2">{{item.date}}</td>
+        <template  v-for="date in globalData.dates">
+          <td colspan="2">{{date}}</td>
         </template>
         <td></td>
       </tr>
-      <tr v-if="!index  && parentIndex == 0" class="labels">
+      <tr class="labels"  v-if="!parentIndex">
         <td></td>
         <td></td>
-        <template  v-for="item in item.rooms">
-          <td v-if="item.label=='Qty'">Qty</td> 
-          <td v-if="item.label=='Rate'">Rate</td>
+        <template  v-for="date in globalData.dates">
+          <td  v-for="label in globalData.labels">{{label}}</td>
         </template>
           <td></td>
       </tr>
-    </template>
     <tr class="category">
         <td 
         colspan="3">
@@ -34,7 +30,9 @@
           class="remove-category" 
           @click="removeCategory($event,parentIndex)">Remove Category</b-button>
         </td>
+       
     </tr>
+     
      <!-- <tr class="enterSpace">
            <drop-zone 
           :id="parentIndex.toString() + index.toString() + 'input'"
@@ -56,6 +54,7 @@
           :grandParentIndex = "parentIndex"
           :isDisabled = globalData.components[parentIndex].disabled></table-row>
         </template>
+        <tr><td>&nbsp;</td></tr>
       </draggable>
       <!-- <dragable class="editable"
       component="tableRow" 
