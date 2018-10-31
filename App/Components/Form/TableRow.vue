@@ -6,7 +6,8 @@
       </span>
     </td>
     <template v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].rooms">
-      <select-element 
+      <select-element
+          class="room-type" 
           :elementData="item" 
           :key="index"
           v-if="!index">{{item.selected ? item.selected : "Select One"}}

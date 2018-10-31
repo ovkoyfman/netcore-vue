@@ -269,6 +269,9 @@ span.handleParent {
 td.handle {
   width: 50px;
 }
+select.room-type {
+  width: 130px;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
