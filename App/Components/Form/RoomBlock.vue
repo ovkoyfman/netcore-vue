@@ -24,7 +24,7 @@
           :disabled="globalData.components[parentIndex].disabled"/>
         </td>
         <td 
-        :colspan="globalData.template.children[0].rooms.length-1">
+        :colspan="globalData.template.children[0].rooms.length*2-1">
           <b-button 
           size="sm" 
           class="remove-category" 
@@ -32,16 +32,9 @@
         </td>
        
     </tr>
-     
-     <!-- <tr class="enterSpace">
-           <drop-zone 
-          :id="parentIndex.toString() + index.toString() + 'input'"
-          ></drop-zone> 
-
-      </tr>-->
       <draggable
       :element="'tbody'" 
-      v-model = globalData.components[parentIndex].children 
+      v-model = globalData.components[parentIndex].children
       :options="{handle:'.handleParent', group:'tables'}" 
       :listId="parentIndex" 
       :id="parentIndex" > 
@@ -49,37 +42,16 @@
         <template  
         v-for="(item, index) in globalData.components[parentIndex].children" >
           <table-row
-          :rowId="index"
+          :key = "index"
+          :rowId =  "index"
           :parentIndex = "index"
           :grandParentIndex = "parentIndex"
           :isDisabled = globalData.components[parentIndex].disabled></table-row>
         </template>
         <tr><td>&nbsp;</td></tr>
       </draggable>
-      <!-- <dragable class="editable"
-      component="tableRow" 
-      :id="parentIndex.toString() + index.toString()"  
-      :key="index" 
-      draggable="true" 
-      :grandParentIndex="parentIndex" 
-      :isDisabled = globalData.components[parentIndex].disabled 
-      :parentIndex="index"></dragable> -->
-      <!-- @updateTotalNights="updateTotalNights" -->
-
-      <!--<tr class="enterSpace" v-if="index==globalData.components[parentIndex].children.length-1">
-           <drop-zone 
-          :id="parentIndex.toString() + (index+1).toString() + 'input'"></drop-zone> 
-      </tr>-->
-      <!-- <tr v-if = "index == elementData.children.length -1">
-        <td>Total Room Nights</td>
-        <template  v-for="item in item.rooms">
-        {{item}} {{item.totalRooms}}
-        <td v-if="item.totalRooms">{{item.totalRooms}}</td> 
-        </template>
-      </tr> -->
-    
     <tr class="form-bottom">
-        <td colspan="2"><b-button size="sm" @click="addRow">Add Row</b-button></td><td :colspan="(globalData.template.children[0].rooms.length-2)"><b-button size="sm" @click="saveForm($event,parentIndex)">Save</b-button></td>
+        <td colspan="2"><b-button size="sm" @click="addRow">Add Row</b-button></td><td :colspan="(globalData.template.children[0].rooms.length*2)"><b-button size="sm" @click="saveForm($event,parentIndex)">Save</b-button></td>
     </tr>
   </table>
 </template>

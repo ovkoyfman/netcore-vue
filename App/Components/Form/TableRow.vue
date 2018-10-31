@@ -1,24 +1,31 @@
 <template>
-<tr :class='"here" + parentIndex'>
-<td class="handle"><span class="handleParent">
-            <i class="fas fa-bars"></i>
-            </span>
-<td class="price-qty" v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].rooms" :key="index" v-if="!item.date">
-          <span v-if="item.label == 'Rate'" class="dollar-sign">$</span>
-          <template v-if="isDisabled && item.component == 'select-element'">{{item.selected ? item.selected : "Select One"}}</template>
-          <!--<template v-if="isDisabled && item.fieldValue">{{item.fieldValue}}</template> -->
-          <component
-            :elementData="item" 
-            :is="item.component" 
-            :isDisabled="isDisabled"
-            :index="index"
-          ></component> 
-          <!-- @dataChanged="updateTotalNights" -->
-        </td>
-        <td>
-        <b-button size="sm" @click="removeRow(grandParentIndex,parentIndex)" v-if="globalData.components[grandParentIndex].children.length > 1">Remove</b-button>
-</td>
-</tr>
+  <tr>
+    <td class="handle">
+      <span class="handleParent">
+        <i class="fas fa-bars"></i>
+      </span>
+    </td>
+    <template v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].rooms">
+      <select-element 
+          :elementData="item" 
+          :key="index"
+          v-if="!index">{{item.selected ? item.selected : "Select One"}}
+      </select-element>
+      <td v-if="index" class="price-qty" :key="index">
+        <span v-if="item.Rate" class="dollar-sign">$</span>
+        <!-- <template v-if="!index">{{item.selected ? item.selected : "Select One"}}</template> -->
+        <!--<template v-if="isDisabled && item.fieldValue">{{item.fieldValue}}</template> -->
+        <b-form-input  v-model="item.Rate" @click="updateField()" :disabled="isDisabled"/>
+      </td>
+      <td v-if="index" class="price-qty"  :key="index">
+        <b-form-input  v-model="item.Qty" @click="updateField()" :disabled="isDisabled"/>
+        <!-- @dataChanged="updateTotalNights" -->
+      </td>
+      <td v-if="index==globalData.components[grandParentIndex].children[parentIndex].rooms.length-1"  :key="index">
+        <b-button size="sm" @click="removeRow(grandParentIndex,parentIndex)">Remove</b-button>
+      </td>
+    </template>
+  </tr>
 </template>
 <script>
 import InputElement from "./Input.vue";
