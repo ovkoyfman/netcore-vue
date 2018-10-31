@@ -1,7 +1,7 @@
 <template>
   <table  class="room-block"  @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
     <tr class="category">
-        <td colspan="3"><b-input v-model="globalData.components[parentIndex].category" :disabled="globalData.components[parentIndex].disabled"/></td><td :colspan="globalData.components[parentIndex].children[0].rooms.length-1"><b-button size="sm" class="remove-category" @click="removeCategory($event,parentIndex)">Remove Category</b-button></td>
+        <td colspan="3"><b-input v-model="globalData.components[parentIndex].category" :disabled="globalData.components[parentIndex].disabled"/></td><td :colspan="globalData.components[parentIndex].children[0].room.length-1"><b-button size="sm" class="remove-category" @click="removeCategory($event,parentIndex)">Remove Category</b-button></td>
     </tr>
     <template  v-for="(item, index) in globalData.components[parentIndex].children" >
       <tr v-if="!index" class="dates">

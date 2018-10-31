@@ -24,7 +24,7 @@
           :disabled="globalData.components[parentIndex].disabled"/>
         </td>
         <td 
-        :colspan="globalData.template.children[0].rooms.length*2-1">
+        :colspan="globalData.template.children[0].room.length*2-1">
           <b-button 
           size="sm" 
           class="remove-category" 
@@ -51,7 +51,7 @@
         <tr><td>&nbsp;</td></tr>
       </draggable>
     <tr class="form-bottom">
-        <td colspan="2"><b-button size="sm" @click="addRow">Add Row</b-button></td><td :colspan="(globalData.template.children[0].rooms.length*2)"><b-button size="sm" @click="saveForm($event,parentIndex)">Save</b-button></td>
+        <td colspan="2"><b-button size="sm" @click="addRow">Add Row</b-button></td><td :colspan="(globalData.template.children[0].room.length*2)"><b-button size="sm" @click="saveForm($event,parentIndex)">Save</b-button></td>
     </tr>
   </table>
 </template>
@@ -83,10 +83,10 @@ export default {
     //    }
     // },
     addRow: function() {
-      var rooms = JSON.parse(
-        JSON.stringify(this.globalData.template.children[0].rooms)
+      var room = JSON.parse(
+        JSON.stringify(this.globalData.template.children[0].room)
       );
-      var roomsObject = new Object({ rooms });
+      var roomsObject = new Object({ room });
       this.$store.commit("addRow", [ this.parentIndex, roomsObject]);
     },
     removeCategory: function(e, index) {

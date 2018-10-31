@@ -59,7 +59,7 @@ button {
   border-top: none;
 }
 .room-block {
-  margin: 20px;
+  margin: 1%;
   border: 1px solid #dee2e6;
 }
 .editable tr input:disabled {
@@ -271,6 +271,9 @@ td.handle {
 }
 select.room-type {
   width: 130px;
+}
+table.room-block {
+  width: 98%;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES

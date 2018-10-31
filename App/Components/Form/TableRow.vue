@@ -5,7 +5,7 @@
         <i class="fas fa-bars"></i>
       </span>
     </td>
-    <template v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].rooms">
+    <template v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].room">
       <select-element
           class="room-type" 
           :elementData="item" 
@@ -22,7 +22,7 @@
         <b-form-input  v-model="item.Qty" @click="updateField()" :disabled="isDisabled"/>
         <!-- @dataChanged="updateTotalNights" -->
       </td>
-      <td v-if="index==globalData.components[grandParentIndex].children[parentIndex].rooms.length-1"  :key="index">
+      <td v-if="index==globalData.components[grandParentIndex].children[parentIndex].room.length-1"  :key="index">
         <b-button size="sm" @click="removeRow(grandParentIndex,parentIndex)">Remove</b-button>
       </td>
     </template>

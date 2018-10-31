@@ -3,7 +3,7 @@
 <td class="handle"><span class="handleParent">
             <i class="fas fa-bars"></i>
             </span>
-<td class="price-qty" v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].rooms" :key="index" v-if="!item.date">
+<td class="price-qty" v-for="(item, index) in globalData.components[grandParentIndex].children[parentIndex].room" :key="index" v-if="!item.date">
           <span v-if="item.label == 'Rate'" class="dollar-sign">$</span>
           <template v-if="isDisabled && item.component == 'select-element'">{{item.selected ? item.selected : "Select One"}}</template>
           <!--<template v-if="isDisabled && item.fieldValue">{{item.fieldValue}}</template> -->

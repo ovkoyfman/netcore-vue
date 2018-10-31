@@ -15,7 +15,7 @@ const state = {
           totalValue: 0,
           children: [
             {
-              rooms: [
+              room: [
                 {
                   selected: "Select One",
                 },
@@ -47,7 +47,30 @@ const state = {
           totalValue: 0,
           children: [
             {
-              rooms: [
+              room: [
+                {
+                  selected: "Select One",
+                },
+                {
+                  Rate: "0",
+                  Qty: "0"
+                },
+                {
+                  Rate: "0",
+                  Qty: "0"
+                },
+                {
+                  Rate: "0",
+                  Qty: "0"
+                },
+                {
+                  Rate: "0",
+                  Qty: "0"
+                }
+              ]
+            },
+            {
+              room: [
                 {
                   selected: "Select One",
                 },
@@ -78,7 +101,7 @@ const state = {
               totalValue: 0,
               children: [
                 {
-                  rooms: [
+                  room: [
                     {
                       selected: "Select One",
                     },
