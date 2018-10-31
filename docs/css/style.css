@@ -195,7 +195,6 @@ td {
 }
 td:first-child {
   text-align: left;
-  padding: 10px;
 }
 .editable select.RoomType {
   float: left;
@@ -261,11 +260,14 @@ tr.enterSpace input {
 }
 span.handleParent {
   position: absolute;
-  top: 12px;
-  left: 45px;
+  top: 9px;
+  left: 18px;
 }
 .handle{
   position: relative;
+}
+td.handle {
+  width: 50px;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES
