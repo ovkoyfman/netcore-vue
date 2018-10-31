@@ -1,5 +1,5 @@
 <template>
-  <table  class="room-block" @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
+  <div  class="room-block" @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
       <tr class="dates" v-if="!parentIndex">
         <td></td>
         <td>Rooms</td>
@@ -50,10 +50,10 @@
         </template>
         <tr><td>&nbsp;</td></tr>
       </draggable>
-    <tr class="form-bottom">
+    <!-- <tr class="form-bottom">
         <td colspan="2"><b-button size="sm" @click="addRow">Add Row</b-button></td><td :colspan="(globalData.template.children[0].room.length*2)"><b-button size="sm" @click="saveForm($event,parentIndex)">Save</b-button></td>
-    </tr>
-  </table>
+    </tr> -->
+  </div>
 </template>
 <script>
 // import DropZone from "./DropZone.vue";

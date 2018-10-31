@@ -29,7 +29,6 @@
   </tr>
 </template>
 <script>
-import InputElement from "./Input.vue";
 import SelectElement from "./Select.vue";
 export default {
   methods: {
@@ -47,7 +46,6 @@ export default {
     // }
   },
   components: {
-    InputElement: InputElement,
     SelectElement: SelectElement
   },
   computed: {

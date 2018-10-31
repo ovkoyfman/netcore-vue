@@ -60,7 +60,6 @@ button {
 }
 .room-block {
   margin: 1%;
-  border: 1px solid #dee2e6;
 }
 .editable tr input:disabled {
   display: none;

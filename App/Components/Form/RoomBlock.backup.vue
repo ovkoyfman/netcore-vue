@@ -1,5 +1,5 @@
 <template>
-  <table  class="room-block"  @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
+  <div  class="room-block"  @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
     <tr class="category">
         <td colspan="3"><b-input v-model="globalData.components[parentIndex].category" :disabled="globalData.components[parentIndex].disabled"/></td><td :colspan="globalData.components[parentIndex].children[0].room.length-1"><b-button size="sm" class="remove-category" @click="removeCategory($event,parentIndex)">Remove Category</b-button></td>
     </tr>
@@ -51,7 +51,7 @@
     <tr class="form-bottom">
         <td colspan="2"><b-button size="sm" @click="addRow">Add Row</b-button></td><td :colspan="(globalData.components[parentIndex].children[0].rooms.length-2)"><b-button size="sm" @click="saveForm($event,parentIndex)">Save</b-button></td>
     </tr>
-  </table>
+  </div>
 </template>
 <script>
 import DropZone from "./DropZone.vue";
