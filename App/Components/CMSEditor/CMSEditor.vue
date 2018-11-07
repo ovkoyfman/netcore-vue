@@ -53,7 +53,6 @@ import sideBar from "./SideBar/Sidebar.vue";
 //import { eventBusForSidebar } from "../../index";
 import navBar from "./NavBar/Navbar.vue";
 import header from "./Header/Header.vue";
-import dropZone from "../Form/DropZone.vue";
 import drag from "vuedraggable";
 export default {
    data: function () {
@@ -79,7 +78,6 @@ export default {
     sideBar: sideBar,
     navBar: navBar,
     cmsHeader: header,
-    dropZone: dropZone,
     drag: drag
   },
    computed: {

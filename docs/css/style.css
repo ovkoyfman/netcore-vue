@@ -274,6 +274,17 @@ select.room-type {
 table.room-block {
   width: 98%;
 }
+.room-block .form-control {
+  border: none;
+}
+#action {
+  border: 1px solid #000;
+  display: none;
+  position: absolute;
+}
+#action span {
+  padding: 10px;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

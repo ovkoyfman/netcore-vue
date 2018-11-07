@@ -154,8 +154,8 @@ const mutations =  {
     removeCategory: function(state, index){
       state.dataForTheForm.components.splice(index, 1);
     },
-    addRow: function(state, [parentIndex, roomsObject]){
-      state.dataForTheForm.components[parentIndex].children.push(roomsObject);
+    addRow: function(state, [index, parentIndex, roomsObject]){
+      state.dataForTheForm.components[parentIndex].children.splice(index+1,0,roomsObject);
     },
      removeRow: function(state,[parentIndex, index]) {
       state.dataForTheForm.components[parentIndex].children.splice(index, 1);

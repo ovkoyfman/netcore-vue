@@ -68,7 +68,7 @@ const router = new VueRouter({
   mode: "history"
 });
 
-new Vue({
+let vm = new Vue({
   el: "#app",
   template: "<router-view></router-view>",
   router,

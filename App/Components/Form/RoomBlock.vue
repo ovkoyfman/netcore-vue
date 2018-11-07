@@ -1,5 +1,5 @@
 <template>
-  <div  class="room-block" @click="transformToEditable($event,parentIndex)" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
+  <div  class="room-block" :class="globalData.components[parentIndex].disabled ? '' : 'edit'">
       <tr class="dates" v-if="!parentIndex">
         <td></td>
         <td>Rooms</td>
@@ -28,25 +28,40 @@
           <b-button 
           size="sm" 
           class="remove-category" 
-          @click="removeCategory($event,parentIndex)">Remove Category</b-button>
-        </td>
-       
+          @click="removeCategory($event)">Remove Category</b-button>
+        </td>  
     </tr>
       <draggable
       :element="'tbody'" 
       v-model = globalData.components[parentIndex].children
       :options="{handle:'.handleParent', group:'tables'}" 
       :listId="parentIndex" 
-      :id="parentIndex" > 
-      <!-- @end="onEnd($event)"-->
+      :id="parentIndex" >
         <template  
         v-for="(item, index) in globalData.components[parentIndex].children" >
-          <table-row
-          :key = "index"
-          :rowId =  "index"
-          :parentIndex = "index"
-          :grandParentIndex = "parentIndex"
-          :isDisabled = globalData.components[parentIndex].disabled></table-row>
+          <tr @contextmenu.prevent="setMenu">
+            <td class="handle">
+              <span class="handleParent">
+                <i class="fas fa-bars"></i>
+              </span>
+            </td>
+            <template v-for="(item, index) in globalData.components[parentIndex].children[index].room">
+              <b-form-select class="room-type" v-if="!index" v-model="item.selected">            
+                <option v-for="option in globalData.options" :value="option.text">{{option.text}}</option>
+              </b-form-select>
+              <td v-if="index" class="price-qty" :key="'td' + index">
+                <span v-if="item.Rate" class="dollar-sign">$</span>
+                <b-form-input  v-model="item.Rate | currency"/>
+              </td>
+             <td v-if="index" class="price-qty"  :key="'1td' + index">
+                <b-form-input  v-model="item.Qty"/>
+              </td>
+               
+            </template>
+            <td>
+                <b-button size="sm" @click="removeRow(index)">Remove</b-button>
+            </td>
+          </tr>
         </template>
         <tr><td>&nbsp;</td></tr>
       </draggable>
@@ -56,44 +71,69 @@
   </div>
 </template>
 <script>
-// import DropZone from "./DropZone.vue";
-// import Dragable from "./Dragable.vue";
-import TableRow from "./TableRow.vue";
 import Draggable from "vuedraggable";
 export default {
   data: function() {
     return {
       inputValue: "",
-      inputElement: {}
+      inputElement: {},
+      top: '0px',
+      left: '0px',
+      vm: vm
     };
   },
+  
   methods: {
-    transformToEditable: function(e, pIndex) {
-      e.stopPropagation();
-      this.$store.commit("transformToEditable", pIndex);
-    },
-    saveForm: function(e, pIndex) {
-      e.stopPropagation();
-      this.$store.commit("saveForm", pIndex);
-    },
-    // onEnd(e){
-    //   console.log(e.from.id);
-    //   if (!this.globalData.components[e.from.id].children.length) {
-    //      this.globalData.components.splice(e.from.id, 1);
-    //    }
+    // addRow: function() {
+    //   var room = JSON.parse(
+    //     JSON.stringify(this.globalData.template.children[0].room)
+    //   );
+    //   var roomsObject = new Object({ room });
+    //   this.$store.commit("addRow", [ this.parentIndex, roomsObject]);
     // },
-    addRow: function() {
+     removeRow: function(index) {
+      this.$store.commit("removeRow",[this.parentIndex, index]);
+    },
+    setViewMenu: function(index) {
+      this.$store.commit("setViewMenu",value);
+    },
+    removeCategory: function(e) {
+      e.preventDefault;
+      e.stopPropagation;
+      this.$store.commit("removeCategory", this.parentIndex);
+    },
+    setMenu: function(top, left) {
+      console.log(this.$refs);
+            // largestHeight = window.innerHeight - this.vm.$refs.right.offsetHeight - 25;
+            // largestWidth = window.innerWidth - this.vm.$refs.right.offsetWidth - 25;
+            // elementWidth = this.vm.$refs.right.offsetWidth;
+            // if (top > largestHeight) top = largestHeight;
+
+            // if (left > largestWidth) left = largestWidth;
+
+            // this.top = top + 30 + 'px';
+            // this.left = left - elementWidth/2 + 'px';
+      },
+      closeMenu: function() {
+        setViewMenu(false);
+      },
+      openMenu: function(e) {
+         setViewMenu(true);
+        Vue.nextTick(function() {
+          console.log(this);
+          this.$refs.right.focus();
+          this.setMenu(e.y, e.x)
+        }.bind(this));
+        e.preventDefault();
+      },
+      showSubMenu: function(index){
+      //at the moment adding row below clicked row
       var room = JSON.parse(
         JSON.stringify(this.globalData.template.children[0].room)
       );
       var roomsObject = new Object({ room });
-      this.$store.commit("addRow", [ this.parentIndex, roomsObject]);
-    },
-    removeCategory: function(e, index) {
-      e.preventDefault;
-      e.stopPropagation;
-      this.$store.commit("removeCategory", index);
-    },
+      this.$store.commit("addRow", [ index,this.parentIndex, roomsObject]);
+    }
     // countNigtsForTheDate: function(thisIndex, parentIndex) {
     //   var count = 0;
     //   this.globalData.components[parentIndex].children.forEach(element => {
@@ -115,6 +155,9 @@ export default {
     globalData: function() {
       return this.$store.getters.formData;
     },
+    viewMenu: function() {
+      return this.$store.state.viewMenu;
+    },
     // totalRoomNights: function() {
     //   let rooms = 0;
     //   this.globalData.components.forEach(element => {
@@ -130,9 +173,6 @@ export default {
     // }
   },
   components: {
-    // DropZone: DropZone,
-    // Dragable: Dragable,
-    TableRow,
     Draggable
   },
   props: ["elementIndex", "parentIndex"]
