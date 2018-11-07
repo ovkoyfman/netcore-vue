@@ -280,6 +280,7 @@ table.room-block {
 #action {
   border: 1px solid #000;
   position: absolute;
+  background-color: #fff;
 }
 #action span {
   padding: 10px;

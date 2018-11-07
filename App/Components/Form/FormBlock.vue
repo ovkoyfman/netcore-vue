@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="form-div">
   <form @submit.prevent class="border" :class="dropClass">
     <table>
       <div  v-for="(item, parentIndex) in formData.components"  class="room-block" :class="formData.components[parentIndex].disabled ? '' : 'edit'">
@@ -82,7 +82,6 @@
 </template>
 <script>
 import Vue from "vue";
-import RoomBlock from "./RoomBlock.vue";
 import Draggable from "vuedraggable";
 export default {
   data: function() {
@@ -109,33 +108,27 @@ export default {
       this.$store.commit("addCategory", component);
       this.formData.components.push(component);
     },
-    setMenu: function(top, left) {
-            let largestHeight = window.innerHeight - this.$refs.right.offsetHeight - 25;
-            console.log(largestHeight);
-            let largestWidth = window.innerWidth - this.$refs.right.offsetWidth - 25;
-            console.log(largestWidth);
-            let elementWidth = this.$refs.right.offsetWidth;
-            if (top > largestHeight) top = largestHeight;
-
-            if (left > largestWidth) left = largestWidth;
-
-            this.top = top + 30 + 'px';
-            this.left = left - elementWidth/2 + 'px';
-      },
-      closeMenu: function() {
-        this.viewMenu = false;
-      },
-      openMenu: function(e) {
-         this.viewMenu = true;
-        Vue.nextTick(function() {
-          this.$refs.right.focus();
-          this.setMenu(e.y, e.x)
-        }.bind(this));
-        e.preventDefault();
-      }
+    setMenu: function(top, offset) {
+      let largestHeight = window.innerHeight - this.$refs.right.offsetHeight;
+      let left = document.getElementById("form-div").offsetWidth / 2;
+      let elementWidth = this.$refs.right.offsetWidth;
+      if (top > largestHeight) top = largestHeight;
+      this.top = top + window.scrollY - offset + 40 + 'px';
+      this.left =  left - elementWidth/2 + 'px';
+    },
+    closeMenu: function() {
+      this.viewMenu = false;
+    },
+    openMenu: function(e) {
+        this.viewMenu = true;
+      Vue.nextTick(function() {
+        this.$refs.right.focus();
+        this.setMenu(e.y, e.offsetY)
+      }.bind(this));
+      e.preventDefault();
+    }
   },
   components: {
-    RoomBlock: RoomBlock,
     Draggable: Draggable
   }
 };
