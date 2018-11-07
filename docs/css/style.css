@@ -279,7 +279,6 @@ table.room-block {
 }
 #action {
   border: 1px solid #000;
-  display: none;
   position: absolute;
 }
 #action span {
