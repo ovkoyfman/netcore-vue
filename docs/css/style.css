@@ -281,9 +281,22 @@ table.room-block {
   border: 1px solid #000;
   position: absolute;
   background-color: #fff;
+  border-radius: 5px;
 }
 #action span {
   padding: 10px;
+}
+.pointer{
+  top: -8px;
+  background-color: #fff;
+  transform: rotate(-45deg);
+  width: 15px;
+  height: 15px;
+  left: 44%;
+  display: inline-block;
+  position: absolute;
+  border-right: 1px solid #000;
+  border-top: 1px solid #000;
 }
 /* ---------------------------------------------------
     MEDIAQUERIES

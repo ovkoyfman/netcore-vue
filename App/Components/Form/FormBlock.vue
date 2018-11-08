@@ -23,7 +23,6 @@
         <td 
         colspan="3">
           <b-input 
-          v-model="formData.components[parentIndex].category" 
           :disabled="formData.components[parentIndex].disabled"/>
         </td>
         <td 
@@ -36,13 +35,12 @@
     </tr>
       <draggable
       :element="'tbody'" 
-      v-model = formData.components[parentIndex].children
       :options="{handle:'.handleParent', group:'tables'}" 
       :listId="parentIndex" 
       :id="parentIndex" >
         <template  
         v-for="(item, index) in formData.components[parentIndex].children" >
-          <tr @contextmenu.prevent="openMenu">
+          <tr @contextmenu.prevent="openMenu($event,index, parentIndex)">
             <td class="handle">
               <span class="handleParent">
                 <i class="fas fa-bars"></i>
@@ -54,16 +52,16 @@
               </b-form-select>
               <td v-if="index" class="price-qty" :key="'td' + index">
                 <span v-if="item.Rate" class="dollar-sign">$</span>
-                <b-form-input  v-model="item.Rate | currency"/>
+                <b-form-input  v-model="item.Rate"/>
               </td>
              <td v-if="index" class="price-qty"  :key="'1td' + index">
                 <b-form-input  v-model="item.Qty"/>
               </td>
                
             </template>
-            <td>
+            <!-- <td>
                 <b-button size="sm" @click="removeRow(index)">Remove</b-button>
-            </td>
+            </td> -->
           </tr>
         </template>
         <tr><td>&nbsp;</td></tr>
@@ -77,7 +75,13 @@
       <b-button size="sm" @click="submitForm()">Submit</b-button>
     </table>
     </form>
-    <div id="action"  v-show="viewMenu" ref="right" :style="{top:top, left:left}"><span><i class="fas fa-bars"></i></span><span><i class="fas fa-bars"></i></span><span><i class="fas fa-bars"></i></span><span><i class="fas fa-bars"></i></span></div>
+    <div id="action"  v-show="viewMenu" ref="right" :style="{top:top, left:left}">
+      <div class="pointer"></div>
+      <span @click="addRow"><i class="fas fa-plus"></i></span>
+      <span @click="removeRow"><i class="fas fa-minus"></i></span>
+      <span><i class="fas fa-bars"></i></span>
+      <span><i class="fas fa-bars"></i></span>
+    </div>
 </div>
 </template>
 <script>
@@ -91,6 +95,8 @@ export default {
       top: '0px',
       viewMenu: false,
       left: '0px',
+      selectedElementIndex: -1,
+      selectedElementParentIndex: -1
     };
   },
   computed: {
@@ -104,9 +110,19 @@ export default {
   methods: {
     addCategory: function() {
       var component = JSON.parse(JSON.stringify(this.formData.template));
-      var lengthOfTheCategoryArray = this.formData.components.length;
       this.$store.commit("addCategory", component);
-      this.formData.components.push(component);
+    },
+
+    removeRow: function() {
+      this.$store.commit("removeRow",[this.selectedElementParentIndex, this.selectedElementIndex]);
+    },
+    addRow: function() {
+      var rooms = JSON.parse(
+        JSON.stringify(this.formData.template.children[0])
+      );
+      //var rooms = new Object({ rooms });
+      console.log(rooms);
+      this.$store.commit("addRow", [ this.selectedElementIndex, this.selectedElementParentIndex, rooms]);
     },
     setMenu: function(top, offset) {
       let largestHeight = window.innerHeight - this.$refs.right.offsetHeight;
@@ -119,11 +135,13 @@ export default {
     closeMenu: function() {
       this.viewMenu = false;
     },
-    openMenu: function(e) {
+    openMenu: function(e, index, parentIndex) {
         this.viewMenu = true;
+        this.selectedElementIndex = index;
+        this.selectedElementParentIndex = parentIndex;
       Vue.nextTick(function() {
         this.$refs.right.focus();
-        this.setMenu(e.y, e.offsetY)
+        this.setMenu(e.y, e.offsetY);
       }.bind(this));
       e.preventDefault();
     }
