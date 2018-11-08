@@ -160,22 +160,12 @@ const mutations =  {
      removeRow: function(state,[parentIndex, index]) {
       state.dataForTheForm.components[parentIndex].children.splice(index, 1);
      },
-    dropElement: function(state, [incomingParent, incomingChild, destinationParent, destinationChild]){
-      let rowToMove = JSON.parse(
-        JSON.stringify(
-          state.dataForTheForm.components[incomingParent].children[incomingChild]
-        )
-      );
-      state.dataForTheForm.components[incomingParent].children.splice(incomingChild, 1);
-      state.dataForTheForm.components[destinationParent].children.splice(
-        destinationChild,
-        0,
-        rowToMove
-      );
-      if (!state.dataForTheForm.components[incomingParent].children.length) {
-        state.dataForTheForm.components.splice(incomingParent, 1);
-       }
-    },
+     clearData: function(state,[parentIndex, index]) {
+      state.dataForTheForm.components[parentIndex].children[index].room.forEach(function(room){
+        room.Qty = "0";
+        room.Rate = "0";
+      })
+     },
     saveForm: function(state, parentIndex){
       state.dataForTheForm.components[parentIndex].disabled = true;
     }

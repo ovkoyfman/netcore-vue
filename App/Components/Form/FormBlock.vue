@@ -1,5 +1,5 @@
 <template>
-<div id="form-div">
+<div id="form-div" @click.prevent.stop="viewMenu = false">
   <form @submit.prevent class="border" :class="dropClass">
     <table>
       <div  v-for="(item, parentIndex) in formData.components"  class="room-block" :class="formData.components[parentIndex].disabled ? '' : 'edit'">
@@ -40,7 +40,8 @@
       :id="parentIndex" >
         <template  
         v-for="(item, index) in formData.components[parentIndex].children" >
-          <tr @contextmenu.prevent="openMenu($event,index, parentIndex)">
+          <!-- <tr @contextmenu.prevent="openMenu($event,index, parentIndex)"> -->
+          <tr @click.prevent.stop="openMenu($event,index, parentIndex)"> 
             <td class="handle">
               <span class="handleParent">
                 <i class="fas fa-bars"></i>
@@ -50,12 +51,12 @@
               <b-form-select class="room-type" v-if="!index" v-model="item.selected">            
                 <option v-for="option in formData.options" :value="option.text">{{option.text}}</option>
               </b-form-select>
+              <td v-if="index" class="price-qty"  :key="'1td' + index">
+                <b-form-input  v-model="item.Qty"/>
+              </td>
               <td v-if="index" class="price-qty" :key="'td' + index">
                 <span v-if="item.Rate" class="dollar-sign">$</span>
                 <b-form-input  v-model="item.Rate"/>
-              </td>
-             <td v-if="index" class="price-qty"  :key="'1td' + index">
-                <b-form-input  v-model="item.Qty"/>
               </td>
                
             </template>
@@ -77,9 +78,9 @@
     </form>
     <div id="action"  v-show="viewMenu" ref="right" :style="{top:top, left:left}">
       <div class="pointer"></div>
-      <span @click="addRow"><i class="fas fa-plus"></i></span>
-      <span @click="removeRow"><i class="fas fa-minus"></i></span>
-      <span><i class="fas fa-bars"></i></span>
+      <span @click="addRow"><i class="fas fa-plus-circle"></i></span>
+      <span @click="removeRow"><i class="fas fa-minus-circle"></i></span>
+      <span @click="clearData"><i class="fas  fa-times-circle"></i></span>
       <span><i class="fas fa-bars"></i></span>
     </div>
 </div>
@@ -115,11 +116,15 @@ export default {
 
     removeRow: function() {
       this.$store.commit("removeRow",[this.selectedElementParentIndex, this.selectedElementIndex]);
+      this.viewMenu = false;
+    },
+    clearData: function() {
+      this.$store.commit("clearData",[this.selectedElementParentIndex, this.selectedElementIndex]);
+      this.viewMenu = false;
     },
     addRow: function() {
-      var rooms = JSON.parse(
-        JSON.stringify(this.formData.template.children[0])
-      );
+      var rooms = JSON.parse(JSON.stringify(this.formData.template.children[0]));
+      this.viewMenu = false;
       //var rooms = new Object({ rooms });
       console.log(rooms);
       this.$store.commit("addRow", [ this.selectedElementIndex, this.selectedElementParentIndex, rooms]);
