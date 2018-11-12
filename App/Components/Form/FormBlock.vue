@@ -23,10 +23,9 @@
       @submit.prevent class="border" 
       :options="{handle:'.handleCategoryParent'}"
       :class="dropClass">
-    <transition-group :element="'form'" name="categories">
-     <template  v-for="(item, parentIndex) in formData.components"  class="room-block">
+    
+     <template  v-for="(item, parentIndex) in formData.components"  class="room-block"><table>
       <draggable
-      :key="'tbody' + parentIndex"
       :element="'tbody'" 
       :options="{handle:'.handleParent', group:'tables'}" 
       :listId="parentIndex" 
@@ -85,7 +84,7 @@
     <!-- <tr class="form-bottom">
         <td colspan="2"><b-button size="sm" @click="addRow">Add Row</b-button></td><td :colspan="(globalData.template.children[0].room.length*2)"><b-button size="sm" @click="saveForm($event,parentIndex)">Save</b-button></td>
     </tr> --></table>
-  </template></transition-group>
+  </template>
       <!-- <component v-for="(item, index) in formData.components" :key="index" :parentIndex="index" :elementIndex="index" :is="item.component" :value="item.value">{{item}}</component> -->
       <!-- <b-button size="sm" @click="addCategory">Add Category</b-button> -->
       
