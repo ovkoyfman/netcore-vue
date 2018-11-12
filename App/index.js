@@ -2,8 +2,6 @@ import 'promise-polyfill/src/polyfill';
 import Vue from "vue";
 import VueRouter from "vue-router";
 import BootstrapVue from "bootstrap-vue";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
 import App from "./App.vue";
 import CreateEdit from "./components/CreateEdit/CreateEdit.vue";
 import CMSEditor from "./components/CMSEditor/CMSEditor.vue";
@@ -13,9 +11,17 @@ import thirdPage from "./components/CMSEditor/ThirdPage.vue";
 import fourthPage from "./components/CMSEditor/FourthPage.vue";
 import dashboard from "./components/Main/Dashboard.vue";
 import { store } from "./store/store.js";
+import flatPickr from "vue-flatpickr-component";
+
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import 'flatpickr/dist/flatpickr.css';
+
 Vue.config.productionTip = false;
+
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
+Vue.use(flatPickr);
 
 Vue.filter("currency", function(value) {
   return "$" + value;

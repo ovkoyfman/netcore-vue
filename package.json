@@ -29,6 +29,7 @@
         "es6-promise": "^4.2.5",
         "promise-polyfill": "^8.1.0",
         "vue": "^2.5.13",
+        "vue-flatpickr-component": "^8.0.0",
         "vue-loader": "^14.0.3",
         "vue-router": "^3.0.1",
         "vue-template-compiler": "^2.5.13",
