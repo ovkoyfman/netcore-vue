@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
+    viewMenu: false,
     dataForCreateProposal: {
       components: [
         [
@@ -91,6 +92,9 @@ export const store = new Vuex.Store({
   mutations: {
     updateNavData: function(state, value) {
       state.menuData = value;
+    },
+    setViewMenu: function(state, value){
+      state.viewMenu = value;
     }
   },
   modules: {

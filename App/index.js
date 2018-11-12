@@ -69,9 +69,17 @@ const router = new VueRouter({
     mode: "history"
 });
 
+<<<<<<< HEAD
 let newApp = new Vue({
     el: "#app",
     template: "<router-view></router-view>",
     router,
     store
+=======
+let vm = new Vue({
+  el: "#app",
+  template: "<router-view></router-view>",
+  router,
+  store
+>>>>>>> master
 });
