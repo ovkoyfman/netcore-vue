@@ -1,9 +1,7 @@
 <template>
 <div id="form-div" @click.prevent.stop="viewMenu = false">
-  <form @submit.prevent class="border" :class="dropClass">
-    <table>
-      <div  v-for="(item, parentIndex) in formData.components"  class="room-block" :class="formData.components[parentIndex].disabled ? '' : 'edit'">
-      <tr class="dates" v-if="!parentIndex">
+   <table  class="room-block">
+      <tr class="dates">
         <td></td>
         <td>Rooms</td>
         <template  v-for="date in formData.dates">
@@ -11,7 +9,7 @@
         </template>
         <td></td>
       </tr>
-      <tr class="labels"  v-if="!parentIndex">
+      <tr class="labels">
         <td></td>
         <td></td>
         <template  v-for="date in formData.dates">
@@ -19,9 +17,30 @@
         </template>
           <td></td>
       </tr>
+    </table>
+   <draggable
+      :element="'form'"
+      @submit.prevent class="border" 
+      :options="{handle:'.handleCategoryParent'}"
+      :class="dropClass">
+    <transition-group :element="'form'" name="categories">
+     <template  v-for="(item, parentIndex) in formData.components"  class="room-block">
+      <draggable
+      :key="'tbody' + parentIndex"
+      :element="'tbody'" 
+      :options="{handle:'.handleParent', group:'tables'}" 
+      :listId="parentIndex" 
+      :id="parentIndex" :class="formData.components[parentIndex].disabled ? '' : 'edit'">
     <tr class="category">
+
+         <td class="handle">
+              <span class="handleCategoryParent">
+                <i class="fas fa-bars"></i>
+              </span>
+            </td>
+    
         <td 
-        colspan="3">
+        colspan="2">
           <b-input 
           :disabled="formData.components[parentIndex].disabled"/>
         </td>
@@ -33,11 +52,7 @@
           @click="removeCategory($event)">Remove Category</b-button>
         </td>  
     </tr>
-      <draggable
-      :element="'tbody'" 
-      :options="{handle:'.handleParent', group:'tables'}" 
-      :listId="parentIndex" 
-      :id="parentIndex" >
+      
         <template  
         v-for="(item, index) in formData.components[parentIndex].children" >
           <!-- <tr @contextmenu.prevent="openMenu($event,index, parentIndex)"> -->
@@ -69,19 +84,19 @@
       </draggable>
     <!-- <tr class="form-bottom">
         <td colspan="2"><b-button size="sm" @click="addRow">Add Row</b-button></td><td :colspan="(globalData.template.children[0].room.length*2)"><b-button size="sm" @click="saveForm($event,parentIndex)">Save</b-button></td>
-    </tr> -->
-  </div>
+    </tr> --></table>
+  </template></transition-group>
       <!-- <component v-for="(item, index) in formData.components" :key="index" :parentIndex="index" :elementIndex="index" :is="item.component" :value="item.value">{{item}}</component> -->
-      <b-button size="sm" @click="addCategory">Add Category</b-button>
-      <b-button size="sm" @click="submitForm()">Submit</b-button>
-    </table>
-    </form>
+      <!-- <b-button size="sm" @click="addCategory">Add Category</b-button> -->
+      
+    
+   </draggable><b-button size="sm" @click="submitForm()">Submit</b-button>
     <div id="action"  v-show="viewMenu" ref="right" :style="{top:top, left:left}">
       <div class="pointer"></div>
       <span @click="addRow"><i class="fas fa-plus-circle"></i></span>
       <span @click="removeRow"><i class="fas fa-minus-circle"></i></span>
       <span @click="clearData"><i class="fas  fa-times-circle"></i></span>
-      <span><i class="fas fa-bars"></i></span>
+      <span @click="copyData"><i class="fas fa-copy"></i></span>
     </div>
 </div>
 </template>
@@ -120,6 +135,10 @@ export default {
     },
     clearData: function() {
       this.$store.commit("clearData",[this.selectedElementParentIndex, this.selectedElementIndex]);
+      this.viewMenu = false;
+    },
+    copyData: function() {
+      this.$store.commit("copyData",[this.selectedElementParentIndex, this.selectedElementIndex]);
       this.viewMenu = false;
     },
     addRow: function() {

@@ -127,7 +127,10 @@ const state = {
           }
         ]
       },
-      dropClassValue: ""
+      dropClassValue: "",
+      tempQty: "0",
+      tempRate: "0",
+      viewMenu: false
 };
 const getters = {
   formData: state => {
@@ -164,6 +167,18 @@ const mutations =  {
       state.dataForTheForm.components[parentIndex].children[index].room.forEach(function(room){
         room.Qty = "0";
         room.Rate = "0";
+      })
+     },
+     copyData: function(state,[parentIndex, index]) {
+      state.dataForTheForm.components[parentIndex].children[index].room.forEach(function(room,index){
+        if(index == 1){
+          state.tempQty = room.Qty;
+          state.tempRate =room.Rate;
+        }
+        else if(index){
+          room.Qty = state.tempQty;
+          room.Rate = state.tempRate;
+        }
       })
      },
     saveForm: function(state, parentIndex){
